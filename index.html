@@ -1,42 +1,44 @@
-23224 /var/openclaw_users/safe-technician/.openclaw/workspace/devtool-suite/tools/flow-builder.html
-ice-width,initial-scale=1.0">
-<title>Flow Builder — Frantz DevTool Suite</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0,user-scalable=yes">
+<title>Flow Builder</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#282a36;--bg2:#21222c;--surface:#44475a;--surface2:#383a4a;--text:#f8f8f2;--text2:#bd93f9;--muted:#6272a4;--accent:#bd93f9;--accent2:#ff79c6;--green:#50fa7b;--orange:#ffb86c;--red:#ff5555;--gold:#f1fa8c;--cyan:#8be9fd;--border:#44475a;--radius:10px;--font:'Inter',sans-serif;--mono:'JetBrains Mono',monospace}
 *{margin:0;padding:0;box-sizing:border-box}
-html{font-size:18px}body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;font-size:16px}::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--surface);border-radius:3px}
-.app{max-width:820px;margin:0 auto;padding:52px 12px 24px}
-.top{position:fixed;top:0;left:0;right:0;height:48px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 12px;z-index:100;gap:8px}
+:root{--bg:#282a36;--bg2:#21222c;--surface:#44475a;--surface2:#383a4a;--text:#f8f8f2;--text2:#bd93f9;--muted:#6272a4;--accent:#bd93f9;--accent2:#ff79c6;--green:#50fa7b;--orange:#ffb86c;--red:#ff5555;--gold:#f1fa8c;--cyan:#8be9fd;--border:#44475a;--radius:10px;--font:'Inter',sans-serif;--mono:'JetBrains Mono',monospace}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;font-size:16px}
+.app{max-width:820px;margin:0 auto;padding:52px 10px 24px}
+.top{position:fixed;top:0;left:0;right:0;height:48px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 10px;z-index:100;gap:8px}
 .top .brand{font-weight:700;font-size:17px;display:flex;align-items:center;gap:5px;flex-shrink:0}
 .top .brand span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .top .links{margin-left:auto;display:flex;gap:4px}
 .top .links a{text-decoration:none;font-size:13px;padding:4px 8px;border-radius:4px;color:var(--muted)}
-.top .links a:hover{color:var(--text);background:var(--surface)}
+.top .links a:active{color:var(--text);background:var(--surface)}
 .tier{font-size:12px;padding:3px 10px;border-radius:8px;cursor:pointer;background:#50fa7b20;color:var(--green);font-weight:600}
-.hero{text-align:center;padding:24px 12px;border-bottom:1px solid var(--border);margin-bottom:12px}
+.hero{text-align:center;padding:24px 10px;border-bottom:1px solid var(--border);margin-bottom:12px}
 .hero h2{font-size:20px;color:var(--text);margin-bottom:6px}
-.hero p{font-size:14px;color:var(--muted);max-width:500px;margin:0 auto}
-.flow-section{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:10px}
+.hero p{font-size:14px;color:var(--muted)}
+.flow-section{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px}
 .flow-section .hd{font-size:15px;font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:5px}
 .flow-section .hd span{font-size:12px;color:var(--muted);font-weight:400;margin-left:auto}
-textarea{width:100%;min-height:60px;padding:10px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:15px;font-family:var(--font);outline:none;resize:vertical;margin-bottom:8px}
-textarea:focus{border-color:var(--accent)}
-.btns{display:flex;gap:8px;flex-wrap:wrap}
-.btns .pry{flex:1;padding:12px 16px;border-radius:6px;border:none;background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--bg);font-size:15px;font-weight:700;cursor:pointer;min-width:0}
-.btns .pry:hover{opacity:.85}
-.btns .sec{flex:1;padding:10px 14px;border-radius:5px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:14px;cursor:pointer;min-width:0}
-.btns .sec:hover{border-color:var(--accent)}
+textarea{width:100%;min-height:60px;padding:10px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:15px;font-family:var(--font);resize:vertical;margin-bottom:8px}
+textarea:focus{border-color:var(--accent);outline:none}
+.btns{display:flex;gap:8px}
+.btns .pry{flex:1;padding:12px 16px;border-radius:6px;border:none;background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--bg);font-size:15px;font-weight:700;cursor:pointer}
+.btns .pry:active{opacity:.7}
+.btns .sec{flex:1;padding:10px 14px;border-radius:5px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:14px;cursor:pointer}
+.btns .sec:active{border-color:var(--accent)}
 .goals-grid{display:grid;grid-template-columns:1fr;gap:8px}
-.goal-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;cursor:pointer;transition:all .15s;-webkit-tap-highlight-color:transparent}
-.goal-card:hover{border-color:var(--accent);background:var(--surface2)}
-.goal-card:active{background:var(--surface2);border-color:var(--accent2)}
+.goal-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;cursor:pointer}
+.goal-card:active{background:var(--surface2);border-color:var(--accent)}
 .goal-card .nm{font-size:16px;font-weight:600;margin-bottom:4px}
 .goal-card .ds{font-size:14px;color:var(--muted);margin-bottom:4px;line-height:1.4}
 .goal-card .st{font-size:12px;color:var(--muted)}
 .goal-card .st span{background:var(--surface2);padding:2px 6px;border-radius:3px;margin-right:4px}
-.step-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:8px;overflow:hidden}
+.step-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;margin-bottom:8px;overflow:hidden}
 .step-card.ok{border-color:var(--green)}
 .step-card.cur{border-color:var(--accent)}
 .step-card .sh{display:flex;align-items:center;padding:12px;gap:10px}
@@ -53,50 +55,50 @@ textarea:focus{border-color:var(--accent)}
 .step-card.cur .body{display:block}
 .step-card .body .in{font-size:14px;color:var(--muted);margin-bottom:8px;line-height:1.5}
 .step-card .body .lnk{display:block;padding:10px;border-radius:5px;background:var(--surface2);color:var(--accent);text-decoration:none;font-size:14px;font-weight:500;margin-bottom:8px;text-align:center}
-.step-card .body .lnk:hover{background:var(--accent);color:var(--bg)}
+.step-card .body .lnk:active{background:var(--accent);color:var(--bg)}
 .step-card .body .nd{display:block;width:100%;padding:12px;border-radius:5px;border:none;background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--bg);font-size:15px;font-weight:700;cursor:pointer}
-.step-card .body .nd:hover{opacity:.85}
+.step-card .body .nd:active{opacity:.7}
 .step-card .body .nd.ok{background:var(--green)}
-.out{display:none;background:var(--bg2);border:2px solid var(--green);border-radius:var(--radius);padding:14px;margin-bottom:10px}
+.out{display:none;background:var(--bg2);border:2px solid var(--green);border-radius:10px;padding:14px;margin-bottom:10px}
 .out.ok{display:block}
 .out .ohd{font-size:16px;font-weight:600;color:var(--green);margin-bottom:6px}
 .out .ds2{font-size:14px;color:var(--muted);margin-bottom:10px}
 .out .dl{display:block;width:100%;padding:14px;border-radius:6px;border:none;background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--bg);font-size:16px;font-weight:700;cursor:pointer}
-.out .dl:hover{opacity:.85}
+.out .dl:active{opacity:.7}
 .out .fmts{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
-.out .fmts button{padding:10px;border-radius:5px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:13px;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.out .fmts button:hover{border-color:var(--accent)}
-footer{text-align:center;padding:16px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;line-height:1.6}
+.out .fmts button{padding:10px;border-radius:5px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:13px;cursor:pointer}
+.out .fmts button:active{border-color:var(--accent)}
+footer{text-align:center;padding:16px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);margin-top:20px;line-height:1.6;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 footer a{color:var(--muted);text-decoration:none;padding:4px}
-footer a:hover{color:var(--accent)}
-/* Desktop tweaks */
-@media(min-width:768px){.goals-grid{grid-template-columns:1fr 1fr}.out .fmts{display:flex;grid-template-columns:none}.btns .pry{flex:initial;padding:10px 24px}.btns .sec{flex:initial;padding:8px 18px}.step-card .body .lnk{display:inline-block;padding:6px 16px}.step-card .body .nd{display:inline-block;width:auto;padding:8px 20px}.out .dl{display:inline-block;width:auto;padding:10px 28px}.out .fmts button{padding:5px 12px}}
-</style></style></style>
-</head><body>
+footer a:active{color:var(--accent)}
+@media(min-width:820px){.goals-grid{grid-template-columns:1fr 1fr}.out .fmts{display:flex;grid-template-columns:none}}
+</style>
+</head>
+<body>
 <div class="top">
-<div class="brand">🔀 <span>Flow Builder</span></div>
+<div class="brand">&#128257; <span>Flow Builder</span></div>
 <div class="links">
 <a href="https://frantzenterprise.github.io/devtool-suite/">Hub</a>
 <a href="https://frantzenterprise.github.io/devtool-suite/pricing.html">Pricing</a>
 </div>
-<span class="tier" id="tierBadge" onclick="cycleTier()">🆓 Free</span>
+<span class="tier" id="tierBadge" onclick="cycleTier()">&#127923; Free</span>
 </div>
 <div class="app">
 <div class="hero">
-<h2>🔀 Flow Builder</h2>
-<p>Describe a goal. Pick a pre-built flow. Walk each step, open the linked tool, mark done. Download results.</p>
+<h2>&#128257; Flow Builder</h2>
+<p>Describe a goal, pick a pre-built flow, walk each step, mark done, download results.</p>
 </div>
 <div class="flow-section">
-<div class="hd">1️⃣ Describe Your Goal</div>
-<textarea id="goalInput" placeholder="Describe your goal...&#10;e.g. 'Convert Markdown to HTML, minify it, and encode it'">Convert a Markdown file to HTML, minify the output, then encode for inline embedding.</textarea>
+<div class="hd">1. Describe Your Goal</div>
+<textarea id="goalInput" placeholder="Describe your goal... e.g. Convert Markdown to HTML, minify it, and encode it">Convert a Markdown file to HTML, minify the output, then encode for inline embedding.</textarea>
 <div class="btns">
-<button class="pry" onclick="handleBuild()">🔀 Build Flow</button>
-<button class="sec" onclick="showGoals()">📋 Browse All Flows</button>
+<button class="pry" onclick="handleBuild()">Build Flow</button>
+<button class="sec" onclick="showGoals()">Browse All Flows</button>
 </div>
 </div>
 <div id="goalsArea" style="display:none">
 <div class="flow-section">
-<div class="hd">📋 Pre-built Goal Flows <span>Click one to start</span></div>
+<div class="hd">Pre-built Goal Flows <span id="goalCount"></span></div>
 <div class="goals-grid" id="goalsGrid"></div>
 </div>
 </div>
@@ -104,94 +106,136 @@ footer a:hover{color:var(--accent)}
 <div id="outArea" class="out"></div>
 </div>
 <footer>
-<a href="https://frantzenterprise.github.io/devtool-suite/">Hub</a> · <a href="https://frantzenterprise.github.io/devtool-suite/pricing.html">Pricing</a> · <a href="https://frantzenterprise.github.io/devtool-suite/privacy.html">Privacy</a> · <a href="https://frantzenterprise.github.io/devtool-suite/terms.html">Terms</a> · ⚡ Powered by Frantz Enterprise
+<a href="https://frantzenterprise.github.io/devtool-suite/">Hub</a> &middot;
+<a href="https://frantzenterprise.github.io/devtool-suite/pricing.html">Pricing</a> &middot;
+<a href="https://frantzenterprise.github.io/devtool-suite/privacy.html">Privacy</a> &middot;
+<a href="https://frantzenterprise.github.io/devtool-suite/terms.html">Terms</a> &middot;
+Powered by Frantz Enterprise
 </footer>
 <script>
-var tier='free',curFlow=null,curStep=-1,acc=''
-function T(i){return {free:'🆓 Free',pro:'⚡ Pro',team:'🏢 Team'}[i]}
-function C(i){return {free:'#50fa7b',pro:'#ff79c6',team:'#ffb86c'}[i]}
-function cycleTier(){var a=['free','pro','team'],b=a[(a.indexOf(tier)+1)%3];tier=b;var e=document.getElementById('tierBadge');e.textContent=T(b);e.style.color=C(b);e.style.background=C(b)+'20'}
-var TU=[{i:'filetrans',n:'File Transformer',u:'https://frantzenterprise.github.io/devtool-filetransformer/'},{i:'minifier',n:'HTML/CSS Minifier',u:'https://frantzenterprise.github.io/devtool-minifier/'},{i:'urldecode',n:'URL Encoder/Decoder',u:'https://frantzenterprise.github.io/devtool-urldecode/'},{i:'csvviewer',n:'CSV Viewer',u:'https://frantzenterprise.github.io/devtool-csvviewer/'},{i:'textcleaner',n:'Text Cleaner',u:'https://frantzenterprise.github.io/devtool-textcleaner/'},{i:'passgen',n:'Password Generator',u:'https://frantzenterprise.github.io/devtool-passgen/'},{i:'uuidgen',n:'UUID Generator',u:'https://frantzenterprise.github.io/devtool-uuidgen/'},{i:'timestamp',n:'Timestamp Converter',u:'https://frantzenterprise.github.io/devtool-timestamp/'},{i:'lorem',n:'Lorem Ipsum',u:'https://frantzenterprise.github.io/devtool-loremipsum/'},{i:'palette',n:'Palette Studio',u:'https://frantzenterprise.github.io/devtool-palettestudio/'},{i:'regex',n:'Regex Builder',u:'https://frantzenterprise.github.io/devtool-regexbuilder/'},{i:'diffchecker',n:'Diff Checker',u:'https://frantzenterprise.github.io/devtool-diffchecker/'},{i:'jsoncsv',n:'JSON ↔ CSV',u:'https://frantzenterprise.github.io/devtool-jsoncsv/'},{i:'jwt',n:'JWT Inspector',u:'https://frantzenterprise.github.io/devtool-jwtinspector/'},{i:'crontab',n:'Crontab Guru',u:'https://frantzenterprise.github.io/devtool-crontabguru/'},{i:'httpcodes',n:'HTTP Status Codes',u:'https://frantzenterprise.github.io/devtool-httpcodes/'}]
-function tn(i){var t=TU.find(function(x){return x.i===i});return t?t.n:'Tool'}
-function tu(i){var t=TU.find(function(x){return x.i===i});return t?t.u:'#'}
-function handleBuild(){var g=document.getElementById('goalInput').value.trim();if(!g){alert('Describe your goal first.');return};showGoals()}
-function showGoals(){document.getElementById('goalsArea').style.display='block';document.getElementById('goalInput').disabled=true}
-var GS=[{ic:'📧',nm:'HTML Email Pipeline',ds:'MD → HTML → Minify → URL-encode for sending',st:[['filetrans','Convert Markdown to HTML. Paste your MD, copy the HTML output.','HTML with basic formatting'],['minifier','Paste the HTML. Click Minify HTML. Copy the minified output.','Minified HTML (~30-50% smaller)'],['urldecode','Paste minified HTML into Encode tab (Component mode). Copy.','URL-encoded HTML ready for email']],rs:'URL-encoded HTML email template ready for embedding.'},
-{ic:'📊',nm:'Clean & Export CSV',ds:'Import CSV → Clean → Deduplicate → Export JSON',st:[['csvviewer','Paste your CSV. Verify columns and rows. Use search.','Clean CSV with correct headers'],['textcleaner','Copy rows. Enable Trim + Remove empty + Deduplicate.','Cleaned and deduplicated data'],['csvviewer','Paste cleaned data back. Click Show JSON. Copy.','JSON array ready for use']],rs:'Clean JSON dataset from CSV.'},
-{ic:'🌐',nm:'Web Asset Pipeline',ds:'Write MD → HTML → Minify → Encode for inline use',st:[['filetrans','Paste Markdown. Select MD to HTML. Copy result.','Clean HTML output'],['minifier','Paste HTML. Click Minify HTML.','Minified HTML'],['urldecode','Paste minified HTML. Encode (Component mode). Copy.','URL-encoded inline HTML']],rs:'URL-encoded HTML ready for inline use.'},
-{ic:'⏱️',nm:'Timeline Analysis',ds:'Generate UUIDs → decode timestamps → human-readable dates',st:[['uuidgen','Generate UUID v1 and v7. Copy them.','UUIDs with version IDs'],['timestamp','Paste decoded timestamps. Convert to human-readable.','Readable dates and times']],rs:'UUIDs with decoded timestamps.'},
-{ic:'🔑',nm:'Password Bulk Generator',ds:'Generate strong passwords → Clean & format',st:[['passgen','Length 16+, all char sets. Count 10. Generate. Copy.','10 strong passwords'],['textcleaner','Paste passwords. Trim. Sort if needed.','Cleaned password list']],rs:'Bulk password list.'},
-{ic:'🎨',nm:'Design Theme Builder',ds:'Base color → Palette → CSS variables',st:[['palette','Pick a base color. Toggle palette modes. Export CSS vars.','Color palette with 5+ colors'],['textcleaner','Copy CSS vars. Clean formatting.','Formatted CSS variables']],rs:'CSS variable declarations.'},
-{ic:'🔍',nm:'Data Validation Pipeline',ds:'JSON → CSV → Review → Diff → Clean',st:[['jsoncsv','Paste JSON. Convert to CSV. Copy.','Tabular CSV'],['csvviewer','Paste CSV. Sort, search, inspect.','Reviewed dataset'],['diffchecker','Paste original vs cleaned. Run Line diff.','Diff showing changes']],rs:'Validated dataset with change log.'},
-{ic:'🔍',nm:'Data Extraction Pipeline',ds:'Raw text → Regex → Extract → Clean',st:[['regex','Paste text. Build pattern. Verify matches highlight.','Verified regex with matches'],['textcleaner','Copy matches. Trim, Deduplicate.','Clean extracted data list']],rs:'Cleaned regex-extracted data.'},
-{ic:'📝',nm:'Blog Post Pipeline',ds:'Lorem placeholder → MD → HTML → Minify',st:[['lorem','Choose style. Generate paragraphs. Copy.','Lorem ipsum text'],['filetrans','Combine MD + placeholder. Convert to HTML.','Full HTML post'],['minifier','Paste HTML. Minify.','Minified HTML']],rs:'Minified HTML blog post.'},
-{ic:'⏰',nm:'Cron Schedule Mapping',ds:'Build cron → Get description → Add timestamps',st:[['crontab','Build expression. Read description. Note next 10 fire times.','Cron expression + description'],['timestamp','Convert fire times to your timezone.','Fire times in your timezone']],rs:'Cron schedule with fire times.'},
-{ic:'🔐',nm:'JWT + Timestamp Chain',ds:'Inspect JWT → Check expiration → Convert timestamps',st:[['jwt','Paste JWT. Inspect payload. Note exp/iat timestamps.','Decoded JWT with timestamps'],['timestamp','Copy exp/iat. Convert to readable.','Readable dates']],rs:'JWT analysis with expiration.'},
-{ic:'🎭',nm:'CSS Theme Generation',ds:'Palette → Minify CSS → Encode for injection',st:[['palette','Pick a color. Generate palette. Export as CSS vars.','CSS variable set'],['minifier','Paste CSS. Click Minify CSS.','Minified CSS vars'],['urldecode','Paste minified CSS. Encode (Component mode). Copy.','URL-encoded CSS']],rs:'URL-encoded CSS theme for injection.'},
-{ic:'🔄',nm:'JWT Replay Analysis',ds:'Inspect JWT → decode timestamps → generate UUID replacement',st:[['jwt','Paste JWT. Inspect header, payload, exp, iat.','Decoded JWT'],['timestamp','Copy exp. Convert to human-readable.','Readable expiry'],['uuidgen','Generate UUID v4 as session replacement token.','Fresh UUID']],rs:'JWT analysis + replacement token.'},
-{ic:'🔬',nm:'Text Audit & Diff',ds:'Clean text → Compare original vs cleaned',st:[['textcleaner','Paste text. Enable Trim + Remove empty. Click Clean.','Cleaned text'],['diffchecker','Paste original left, cleaned right. Run Line diff.','Visual diff']],rs:'Cleaned text with audit diff.'},
-{ic:'🌐',nm:'API Request Builder',ds:'Build URL → Encode params → Minify body → Check status',st:[['urldecode','Build API URL. Encode query parameter values.','Encoded API URL'],['minifier','Paste HTML/JSON body. Minify.','Minified body'],['httpcodes','Look up expected status codes.','Status code reference']],rs:'Clean API request with status ref.'},
-{ic:'📦',nm:'Data Format Migration',ds:'JSON → CSV → Review → Diff → Corrected JSON',st:[['jsoncsv','Paste JSON. Convert to CSV. Copy.','Tabular CSV'],['csvviewer','Paste CSV. Sort, verify integrity.','Reviewed dataset'],['diffchecker','Original vs corrected. Run diff.','Change log'],['jsoncsv','Paste corrected CSV. Convert to JSON.','Corrected JSON']],rs:'Migrated data in JSON.'},
-{ic:'📅',nm:'Event Timeline Report',ds:'Generate timestamps → UUID events → Sorted timeline',st:[['timestamp','Generate timestamps in various timezones.','List of timestamps'],['uuidgen','Generate UUID event IDs for each.','UUID-timestamp pairs'],['textcleaner','Paste pairs. Sort, clean formatting.','Sorted event timeline']],rs:'Structured timeline with UUIDs.'},
-{ic:'⏰',nm:'Password Rotation Scheduler',ds:'Cron schedule → Bulk passwords → Rotation doc',st:[['crontab','Build weekly/monthly rotation cron expression.','Cron schedule'],['passgen','Generate 5 strong passwords (20+ chars).','5 strong passwords'],['textcleaner','Paste passwords. Clean. Add schedule header.','Rotation document']],rs:'Password rotation plan.'},
-{ic:'🧹',nm:'Regex Extraction & Clean',ds:'Extract patterns → Clean results → Audit diff',st:[['regex','Paste source. Build pattern. Extract matches.','Extracted matches'],['textcleaner','Paste matches. Trim, deduplicate, sort.','Cleaned data'],['diffchecker','Raw vs cleaned. Run diff.','Cleaning audit']],rs:'Cleaned data with audit trail.'},
-{ic:'🚀',nm:'HTML Deployment Prep',ds:'MD → HTML → Minify → Encode → Status check',st:[['filetrans','Paste Markdown. Convert to HTML.','HTML content'],['minifier','Paste HTML. Minify.','Minified HTML'],['urldecode','If needed: encode as URL component. Copy.','Encoded HTML'],['httpcodes','Check deployment status codes.','Status reference']],rs:'Production-ready HTML.'},
-{ic:'🎨',nm:'CSS Color Audit',ds:'Generate palettes → Compare → Export clean CSS',st:[['palette','Generate 2-3 palettes. Export as CSS vars.','Multiple CSS sets'],['diffchecker','Compare two sets side-by-side. Pick best.','Selected diff'],['textcleaner','Paste winning CSS. Clean formatting.','Final clean CSS']],rs:'Audited CSS palette.'}];
-// Set up grid
-var grid=document.getElementById('goalsGrid');
-var h='';GS.forEach(function(g,i){h+='<div class="goal-card" onclick="startGoal('+i+')"><div class="nm">'+g.ic+' '+g.nm+'</div><div class="ds">'+g.ds+'</div><div class="st">'+(g.st.map(function(){return '<span>Step</span>'}).join(' '))+'</div></div>'});
-grid.innerHTML=h;
-// Goal count display
-var ct=document.querySelector('.flow-section .hd span');
-if(ct)ct.textContent='('+(GS.length)+' flows)';
+var tier="free",curFlow=null,curStep=-1,acc="";
+
+function T(i){return{free:"🆓 Free",pro:"⚡ Pro",team:"🏢 Team"}[i]}
+function C(i){return{free:"#50fa7b",pro:"#ff79c6",team:"#ffb86c"}[i]}
+function cycleTier(){var a=["free","pro","team"],b=a[(a.indexOf(tier)+1)%3];tier=b;var e=document.getElementById("tierBadge");e.textContent=T(b);e.style.color=C(b);e.style.background=C(b)+"20"}
+
+var TU=[
+{i:"filetrans",n:"File Transformer",u:"https://frantzenterprise.github.io/devtool-filetransformer/"},
+{i:"minifier",n:"HTML/CSS Minifier",u:"https://frantzenterprise.github.io/devtool-minifier/"},
+{i:"urldecode",n:"URL Encoder/Decoder",u:"https://frantzenterprise.github.io/devtool-urldecode/"},
+{i:"csvviewer",n:"CSV Viewer",u:"https://frantzenterprise.github.io/devtool-csvviewer/"},
+{i:"textcleaner",n:"Text Cleaner",u:"https://frantzenterprise.github.io/devtool-textcleaner/"},
+{i:"passgen",n:"Password Generator",u:"https://frantzenterprise.github.io/devtool-passgen/"},
+{i:"uuidgen",n:"UUID Generator",u:"https://frantzenterprise.github.io/devtool-uuidgen/"},
+{i:"timestamp",n:"Timestamp Converter",u:"https://frantzenterprise.github.io/devtool-timestamp/"},
+{i:"lorem",n:"Lorem Ipsum",u:"https://frantzenterprise.github.io/devtool-loremipsum/"},
+{i:"palette",n:"Palette Studio",u:"https://frantzenterprise.github.io/devtool-palettestudio/"},
+{i:"regex",n:"Regex Builder",u:"https://frantzenterprise.github.io/devtool-regexbuilder/"},
+{i:"diffchecker",n:"Diff Checker",u:"https://frantzenterprise.github.io/devtool-diffchecker/"},
+{i:"jsoncsv",n:"JSON ↔ CSV",u:"https://frantzenterprise.github.io/devtool-jsoncsv/"},
+{i:"jwt",n:"JWT Inspector",u:"https://frantzenterprise.github.io/devtool-jwtinspector/"},
+{i:"crontab",n:"Crontab Guru",u:"https://frantzenterprise.github.io/devtool-crontabguru/"},
+{i:"httpcodes",n:"HTTP Status Codes",u:"https://frantzenterprise.github.io/devtool-httpcodes/"}
+];
+function tn(i){var t=TU.find(function(x){return x.i===i});return t?t.n:"Tool"}
+function tu(i){var t=TU.find(function(x){return x.i===i});return t?t.u:"#"}
+
+function handleBuild(){var g=document.getElementById("goalInput").value.trim();if(!g){alert("Describe your goal first.");return}showGoals()}
+function showGoals(){document.getElementById("goalsArea").style.display="block";document.getElementById("goalInput").disabled=true}
+
+var GS=[
+{ic:"📧",nm:"HTML Email Pipeline",ds:"MD → HTML → Minify → URL-encode for sending",st:[["filetrans","Convert Markdown to HTML. Paste your MD, copy the HTML output.","HTML with basic formatting"],["minifier","Paste the HTML. Click Minify HTML. Copy the minified output.","Minified HTML (~30-50% smaller)"],["urldecode","Paste minified HTML into Encode tab (Component mode). Copy.","URL-encoded HTML ready for email"]],rs:"URL-encoded HTML email template ready for embedding."},
+{ic:"📊",nm:"Clean & Export CSV",ds:"Import CSV → Clean → Deduplicate → Export JSON",st:[["csvviewer","Paste your CSV. Verify columns and rows. Use search.","Clean CSV with correct headers"],["textcleaner","Copy rows. Enable Trim + Remove empty + Deduplicate.","Cleaned and deduplicated data"],["csvviewer","Paste cleaned data back. Click Show JSON. Copy.","JSON array ready for use"]],rs:"Clean JSON dataset from CSV."},
+{ic:"🌐",nm:"Web Asset Pipeline",ds:"Write MD → HTML → Minify → Encode for inline use",st:[["filetrans","Paste Markdown. Select MD to HTML. Copy result.","Clean HTML output"],["minifier","Paste HTML. Click Minify HTML.","Minified HTML"],["urldecode","Paste minified HTML. Encode (Component mode). Copy.","URL-encoded inline HTML"]],rs:"URL-encoded HTML ready for inline use."},
+{ic:"⏱️",nm:"Timeline Analysis",ds:"Generate UUIDs → decode timestamps → human-readable dates",st:[["uuidgen","Generate UUID v1 and v7. Copy them.","UUIDs with version IDs"],["timestamp","Paste decoded timestamps. Convert to human-readable.","Readable dates and times"]],rs:"UUIDs with decoded timestamps."},
+{ic:"🔑",nm:"Password Bulk Generator",ds:"Generate strong passwords → Clean & format",st:[["passgen","Length 16+, all char sets. Count 10. Generate. Copy.","10 strong passwords"],["textcleaner","Paste passwords. Trim. Sort if needed.","Cleaned password list"]],rs:"Bulk password list."},
+{ic:"🎨",nm:"Design Theme Builder",ds:"Base color → Palette → CSS variables",st:[["palette","Pick a base color. Toggle palette modes. Export CSS vars.","Color palette with 5+ colors"],["textcleaner","Copy CSS vars. Clean formatting.","Formatted CSS variables"]],rs:"CSS variable declarations."},
+{ic:"🔍",nm:"Data Validation Pipeline",ds:"JSON → CSV → Review → Diff → Clean",st:[["jsoncsv","Paste JSON. Convert to CSV. Copy.","Tabular CSV"],["csvviewer","Paste CSV. Sort, search, inspect.","Reviewed dataset"],["diffchecker","Paste original vs cleaned. Run Line diff.","Diff showing changes"]],rs:"Validated dataset with change log."},
+{ic:"🔍",nm:"Data Extraction Pipeline",ds:"Raw text → Regex → Extract → Clean",st:[["regex","Paste text. Build pattern. Verify matches highlight.","Verified regex with matches"],["textcleaner","Copy matches. Trim, Deduplicate.","Clean extracted data list"]],rs:"Cleaned regex-extracted data."},
+{ic:"📝",nm:"Blog Post Pipeline",ds:"Lorem placeholder → MD → HTML → Minify",st:[["lorem","Choose style. Generate paragraphs. Copy.","Lorem ipsum text"],["filetrans","Combine MD + placeholder. Convert to HTML.","Full HTML post"],["minifier","Paste HTML. Minify.","Minified HTML"]],rs:"Minified HTML blog post."},
+{ic:"⏰",nm:"Cron Schedule Mapping",ds:"Build cron → Get description → Add timestamps",st:[["crontab","Build expression. Read description. Note next 10 fire times.","Cron expression + description"],["timestamp","Convert fire times to your timezone.","Fire times in your timezone"]],rs:"Cron schedule with fire times."},
+{ic:"🔐",nm:"JWT + Timestamp Chain",ds:"Inspect JWT → Check expiration → Convert timestamps",st:[["jwt","Paste JWT. Inspect payload. Note exp/iat timestamps.","Decoded JWT with timestamps"],["timestamp","Copy exp/iat. Convert to readable.","Readable dates"]],rs:"JWT analysis with expiration."},
+{ic:"🎭",nm:"CSS Theme Generation",ds:"Palette → Minify CSS → Encode for injection",st:[["palette","Pick a color. Generate palette. Export as CSS vars.","CSS variable set"],["minifier","Paste CSS. Click Minify CSS.","Minified CSS vars"],["urldecode","Paste minified CSS. Encode (Component mode). Copy.","URL-encoded CSS"]],rs:"URL-encoded CSS theme for injection."},
+{ic:"🔄",nm:"JWT Replay Analysis",ds:"Inspect JWT → decode timestamps → generate UUID replacement",st:[["jwt","Paste JWT. Inspect header, payload, exp, iat.","Decoded JWT"],["timestamp","Copy exp. Convert to human-readable.","Readable expiry"],["uuidgen","Generate UUID v4 as session replacement token.","Fresh UUID"]],rs:"JWT analysis + replacement token."},
+{ic:"🔬",nm:"Text Audit & Diff",ds:"Clean text → Compare original vs cleaned",st:[["textcleaner","Paste text. Enable Trim + Remove empty. Click Clean.","Cleaned text"],["diffchecker","Paste original left, cleaned right. Run Line diff.","Visual diff"]],rs:"Cleaned text with audit diff."},
+{ic:"🌐",nm:"API Request Builder",ds:"Build URL → Encode params → Minify body → Check status",st:[["urldecode","Build API URL. Encode query parameter values.","Encoded API URL"],["minifier","Paste HTML/JSON body. Minify.","Minified body"],["httpcodes","Look up expected status codes.","Status code reference"]],rs:"Clean API request with status ref."},
+{ic:"📦",nm:"Data Format Migration",ds:"JSON → CSV → Review → Diff → Corrected JSON",st:[["jsoncsv","Paste JSON. Convert to CSV. Copy.","Tabular CSV"],["csvviewer","Paste CSV. Sort, verify integrity.","Reviewed dataset"],["diffchecker","Original vs corrected. Run diff.","Change log"],["jsoncsv","Paste corrected CSV. Convert to JSON.","Corrected JSON"]],rs:"Migrated data in JSON."},
+{ic:"📅",nm:"Event Timeline Report",ds:"Generate timestamps → UUID events → Sorted timeline",st:[["timestamp","Generate timestamps in various timezones.","List of timestamps"],["uuidgen","Generate UUID event IDs for each.","UUID-timestamp pairs"],["textcleaner","Paste pairs. Sort, clean formatting.","Sorted event timeline"]],rs:"Structured timeline with UUIDs."},
+{ic:"⏰",nm:"Password Rotation Scheduler",ds:"Cron schedule → Bulk passwords → Rotation doc",st:[["crontab","Build weekly/monthly rotation cron expression.","Cron schedule"],["passgen","Generate 5 strong passwords (20+ chars).","5 strong passwords"],["textcleaner","Paste passwords. Clean. Add schedule header.","Rotation document"]],rs:"Password rotation plan."},
+{ic:"🧹",nm:"Regex Extraction & Clean",ds:"Extract patterns → Clean results → Audit diff",st:[["regex","Paste source. Build pattern. Extract matches.","Extracted matches"],["textcleaner","Paste matches. Trim, deduplicate, sort.","Cleaned data"],["diffchecker","Raw vs cleaned. Run diff.","Cleaning audit"]],rs:"Cleaned data with audit trail."},
+{ic:"🚀",nm:"HTML Deployment Prep",ds:"MD → HTML → Minify → Encode → Status check",st:[["filetrans","Paste Markdown. Convert to HTML.","HTML content"],["minifier","Paste HTML. Minify.","Minified HTML"],["urldecode","If needed: encode as URL component. Copy.","Encoded HTML"],["httpcodes","Check deployment status codes.","Status reference"]],rs:"Production-ready HTML."},
+{ic:"🎨",nm:"CSS Color Audit",ds:"Generate palettes → Compare → Export clean CSS",st:[["palette","Generate 2-3 palettes. Export as CSS vars.","Multiple CSS sets"],["diffchecker","Compare two sets side-by-side. Pick best.","Selected diff"],["textcleaner","Paste winning CSS. Clean formatting.","Final clean CSS"]],rs:"Audited CSS palette."}
+];
+
+function initGrid(){
+  var grid=document.getElementById("goalsGrid"),h="";
+  GS.forEach(function(g,i){h+='<div class="goal-card" onclick="startGoal('+i+')"><div class="nm">'+g.ic+" "+g.nm+'</div><div class="ds">'+g.ds+'</div><div class="st">'+g.st.map(function(){return"<span>Step</span>"}).join(" ")+"</div></div>"});
+  grid.innerHTML=h;
+  document.getElementById("goalCount").textContent="("+GS.length+" flows)";
+}
+
 function startGoal(idx){
-curFlow=GS[idx];curStep=0;acc='';
-document.getElementById('goalsArea').style.display='none';
-var fa=document.getElementById('flowArea');fa.style.display='block';
-var h2='<div class="flow-section"><div class="hd">'+curFlow.ic+' '+curFlow.nm+' <span id="flowProg">0/'+curFlow.st.length+' steps</span></div><div id="stepsArea"></div><div style="margin-top:6px"><button class="sec" onclick="resetFlow()">← Back to flows</button></div></div>';
-fa.innerHTML=h2;renderSteps();activateStep(0);
-var out=document.getElementById('outArea');out.style.display='none';out.className='out';
+  curFlow=GS[idx];curStep=0;acc="";
+  document.getElementById("goalsArea").style.display="none";
+  var fa=document.getElementById("flowArea");
+  fa.style.display="block";
+  var h='<div class="flow-section"><div class="hd">'+curFlow.ic+" "+curFlow.nm+' <span id="flowProg">0/'+curFlow.st.length+" steps</span></div><div id=\"stepsArea\"></div><div style=\"margin-top:8px\"><button class=\"sec\" onclick=\"resetFlow()\">Back to flows</button></div></div>";
+  fa.innerHTML=h;renderSteps();activateStep(0);
+  document.getElementById("outArea").style.display="none";document.getElementById("outArea").className="out";
 }
+
 function renderSteps(){
-var sa=document.getElementById('stepsArea');
-var h='';curFlow.st.forEach(function(s,i){
-h+='<div class="step-card" id="sc'+i+'"><div class="sh"><div class="num">'+(i+1)+'</div><div class="info"><div class="sn">'+tn(s[0])+'</div><div class="sd">'+s[1].substring(0,60)+'...</div></div><div class="st2" id="st2'+i+'">⏳ Pending</div></div><div class="body"><div class="in">'+s[1]+'</div><a class="lnk" href="'+tu(s[0])+'" target="_blank">🚀 Open '+tn(s[0])+' →</a><br><button class="nd" id="nd'+i+'" onclick="markDone('+i+')">✅ Done — I completed this step</button></div></div>'
-});sa.innerHTML=h;
+  var sa=document.getElementById("stepsArea"),h="";
+  curFlow.st.forEach(function(s,i){
+    h+='<div class="step-card" id="sc'+i+'"><div class="sh"><div class="num">'+(i+1)+'</div><div class="info"><div class="sn">'+tn(s[0])+'</div><div class="sd">'+s[1].substring(0,60)+'...</div></div><div class="st2" id="st2'+i+'">Pending</div></div><div class="body"><div class="in">'+s[1]+'</div><a class="lnk" href="'+tu(s[0])+'" target="_blank">Open '+tn(s[0])+'</a><button class="nd" id="nd'+i+'" onclick="markDone('+i+')">Done - I completed this step</button></div></div>';
+  });
+  sa.innerHTML=h;
 }
+
 function activateStep(i){
-if(i>=curFlow.st.length){finishFlow();return}
-curStep=i;
-var cards=document.querySelectorAll('.step-card');
-cards.forEach(function(c){c.className='step-card'});
-var card=document.getElementById('sc'+i);if(card){card.className='step-card cur';card.scrollIntoView({behavior:'smooth',block:'center'})}
-var st=document.getElementById('st2'+i);if(st){st.textContent='⚡ Active';st.className='st2 cur'}
-document.getElementById('flowProg').textContent=i+'/'+curFlow.st.length+' steps';
+  if(i>=curFlow.st.length){finishFlow();return}
+  curStep=i;
+  document.querySelectorAll(".step-card").forEach(function(c){c.className="step-card"});
+  var card=document.getElementById("sc"+i);if(card){card.className="step-card cur";card.scrollIntoView({behavior:"smooth",block:"center"})}
+  var st2=document.getElementById("st2"+i);if(st2){st2.textContent="Active";st2.className="st2 cur"}
+  document.getElementById("flowProg").textContent=i+"/"+curFlow.st.length+" steps";
 }
+
 function markDone(i){
-if(i!==curStep)return;
-var card=document.getElementById('sc'+i);if(card)card.className='step-card ok';
-var st=document.getElementById('st2'+i);if(st){st.textContent='✅ Done';st.className='st2 ok'}
-var btn=document.getElementById('nd'+i);if(btn){btn.textContent='✅ Completed';btn.disabled=true;btn.style.opacity='.5';btn.className='nd ok'}
-acc+='[Step '+(i+1)+': '+curFlow.st[i][0]+'] Completed.\n';
-activateStep(i+1);
+  if(i!==curStep)return;
+  document.getElementById("sc"+i).className="step-card ok";
+  document.getElementById("st2"+i).textContent="Done";document.getElementById("st2"+i).className="st2 ok";
+  var btn=document.getElementById("nd"+i);btn.textContent="Completed";btn.disabled=true;btn.style.opacity=".5";btn.className="nd ok";
+  acc+="[Step "+(i+1)+": "+curFlow.st[i][0]+"] Completed.\n";
+  activateStep(i+1);
 }
+
 function finishFlow(){
-document.getElementById('flowProg').textContent='✅ Complete';
-var out=document.getElementById('outArea');out.style.display='block';out.className='out ok';
-out.innerHTML='<div class="ohd">✅ Goal Complete</div><div class="ds2">'+curFlow.nm+' is finished. Download results below.</div><button class="dl" onclick="downloadResult()">⬇ Download Result</button><div class="fmts"><button onclick="downAs(\'txt\')">📄 TXT</button><button onclick="downAs(\'html\')">🌐 HTML</button><button onclick="downAs(\'json\')">📋 JSON</button><button onclick="downAs(\'md\')">📝 MD</button></div>';
+  document.getElementById("flowProg").textContent="Complete";
+  var out=document.getElementById("outArea");out.style.display="block";out.className="out ok";
+  out.innerHTML='<div class="ohd">Goal Complete</div><div class="ds2">'+curFlow.nm+' is finished. Download results below.</div><button class="dl" onclick="downloadResult()">Download Result</button><div class="fmts"><button onclick="downAs(\"txt\")">TXT</button><button onclick="downAs(\"html\")">HTML</button><button onclick="downAs(\"json\")">JSON</button><button onclick="downAs(\"md\")">MD</button></div>';
 }
+
 function downloadResult(){
-var t='# '+curFlow.nm+' - Flow Result\n## Description: '+curFlow.ds+'\n\n## Steps\n';curFlow.st.forEach(function(s,i){t+='### '+(i+1)+'. '+tn(s[0])+'\n- Action: '+s[1]+'\n- Result: '+s[2]+'\n\n'});t+='\n## Summary\n'+curFlow.rs+'\n';acc=t;
-var b=new Blob([t],{type:'text/plain'});var u=URL.createObjectURL(b);var a=document.createElement('a');a.href=u;a.download='flow-result.txt';a.click();URL.revokeObjectURL(u)
+  var t="# "+curFlow.nm+" - Flow Result\n## Description: "+curFlow.ds+"\n\n## Steps\n";
+  curFlow.st.forEach(function(s,i){t+="### "+(i+1)+". "+tn(s[0])+"\n- Action: "+s[1]+"\n- Result: "+s[2]+"\n\n"});
+  t+="\n## Summary\n"+curFlow.rs+"\n";acc=t;
+  var b=new Blob([t],{type:"text/plain"}),u=URL.createObjectURL(b),a=document.createElement("a");a.href=u;a.download="flow-result.txt";a.click();URL.revokeObjectURL(u);
 }
+
 function downAs(f){
-var t='';if(f==='txt'){t=acc||'No data.';dl(t,'flow-result.txt','text/plain')}
-if(f==='html'){t='<!DOCTYPE html><html><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0,user-scalable=yes"><title>'+curFlow.nm+'</title></head><body><h1>'+curFlow.nm+'</h1><pre>'+(acc||'')+'</pre></body></html>';dl(t,'flow-result.html','text/html')}
-if(f==='json'){t=JSON.stringify({goal:curFlow.nm,description:curFlow.ds,steps:curFlow.st.map(function(s){return{tool:tn(s[0]),action:s[1],expected:s[2]}}),result:curFlow.rs});dl(t,'flow-result.json','application/json')}
-if(f==='md'){t='# '+curFlow.nm+'\n\n'+curFlow.ds+'\n\n## Steps\n'+curFlow.st.map(function(s,i){return (i+1)+'. **'+tn(s[0])+'**: '+s[1];}).join('\n')+'\n\n## Result\n'+curFlow.rs;dl(t,'flow-result.md','text/markdown')}
+  var c="";
+  if(f==="txt"){c=acc||"No data.";dl(c,"flow-result.txt","text/plain")}
+  if(f==="html"){c="<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0\"><title>"+curFlow.nm+"</title></head><body><h1>"+curFlow.nm+"</h1><pre>"+(acc||"")+"</pre></body></html>";dl(c,"flow-result.html","text/html")}
+  if(f==="json"){c=JSON.stringify({goal:curFlow.nm,description:curFlow.ds,steps:curFlow.st.map(function(s){return{tool:tn(s[0]),action:s[1],expected:s[2]}}),result:curFlow.rs});dl(c,"flow-result.json","application/json")}
+  if(f==="md"){c="# "+curFlow.nm+"\n\n"+curFlow.ds+"\n\n## Steps\n"+curFlow.st.map(function(s,i){return (i+1)+". **"+tn(s[0])+"**: "+s[1]}).join("\n")+"\n\n## Result\n"+curFlow.rs;dl(c,"flow-result.md","text/markdown")}
 }
-function dl(c,n,t){var b=new Blob([c],{type:t});var u=URL.createObjectURL(b);var a=document.createElement('a');a.href=u;a.download=n;a.click();URL.revokeObjectURL(u)}
-function resetFlow(){curFlow=null;curStep=-1;acc='';document.getElementById('flowArea').style.display='none';document.getElementById('goalsArea').style.display='block'}
+
+function dl(c,n,t){var b=new Blob([c],{type:t}),u=URL.createObjectURL(b),a=document.createElement("a");a.href=u;a.download=n;a.click();URL.revokeObjectURL(u)}
+
+function resetFlow(){curFlow=null;curStep=-1;acc="";document.getElementById("flowArea").style.display="none";document.getElementById("goalsArea").style.display="block"}
+
+initGrid();
 </script>
-</body></html>
+</body>
+</html>
