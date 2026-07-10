@@ -186,7 +186,8 @@ var b=new Blob([t],{type:'text/plain'});var u=URL.createObjectURL(b);var a=docum
 }
 function downAs(f){
 var t='';if(f==='txt'){t=acc||'No data.';dl(t,'flow-result.txt','text/plain')}
-if(f==='html'){t='<!DOCTYPE html><html><head><title>'+curFlow.nm+'</title></head><body><h1>'+curFlow.nm+'</h1><pre>'+(acc||'')+'</pre></body></html>';dl(t,'flow-result.html','text/html')}
+if(f==='html'){t='<!DOCTYPE html><html><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0,user-scalable=yes"><title>'+curFlow.nm+'</title></head><body><h1>'+curFlow.nm+'</h1><pre>'+(acc||'')+'</pre></body></html>';dl(t,'flow-result.html','text/html')}
 if(f==='json'){t=JSON.stringify({goal:curFlow.nm,description:curFlow.ds,steps:curFlow.st.map(function(s){return{tool:tn(s[0]),action:s[1],expected:s[2]}}),result:curFlow.rs});dl(t,'flow-result.json','application/json')}
 if(f==='md'){t='# '+curFlow.nm+'\n\n'+curFlow.ds+'\n\n## Steps\n'+curFlow.st.map(function(s,i){return (i+1)+'. **'+tn(s[0])+'**: '+s[1];}).join('\n')+'\n\n## Result\n'+curFlow.rs;dl(t,'flow-result.md','text/markdown')}
 }
