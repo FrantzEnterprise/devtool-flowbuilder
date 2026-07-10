@@ -1,5 +1,5 @@
-<!DOCTYPE html><html lang="en"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+23224 /var/openclaw_users/safe-technician/.openclaw/workspace/devtool-suite/tools/flow-builder.html
+ice-width,initial-scale=1.0">
 <title>Flow Builder — Frantz DevTool Suite</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -16,65 +16,60 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 .top .links a{text-decoration:none;font-size:.5rem;padding:3px 7px;border-radius:4px;color:var(--muted)}
 .top .links a:hover{color:var(--text);background:var(--surface)}
 .tier{font-size:.5rem;padding:2px 8px;border-radius:8px;cursor:pointer;background:#50fa7b20;color:var(--green);font-weight:600}
+#toolSection{background:var(--bg2);border:var(--border);border-radius:var(--radius);padding:10px;color:var(--muted)}
 h1{font-size:1.1rem;color:var(--text2);margin-bottom:2px;display:flex;align-items:center;gap:6px}
 .sub{font-size:.65rem;color:var(--muted);margin-bottom:8px}
 .hero{text-align:center;padding:24px 12px;border-bottom:1px solid var(--border);margin-bottom:10px}
 .hero h2{font-size:.9rem;color:var(--text);margin-bottom:4px}
 .hero p{font-size:.6rem;color:var(--muted);max-width:500px;margin:0 auto}
-.search-section{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:12px;margin-bottom:8px}
-.search-section textarea{width:100%;min-height:60px;padding:7px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.72rem;font-family:var(--font);outline:none;resize:vertical;margin-bottom:6px}
-.search-section textarea:focus{border-color:var(--accent)}
-.search-section .row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
-.search-section .btn{padding:6px 18px;border-radius:6px;border:none;background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--bg);font-size:.62rem;font-weight:700;cursor:pointer}
-.search-section .btn:hover{opacity:.85}
-.search-section .btn-sec{padding:5px 12px;border-radius:5px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.55rem;cursor:pointer}
-.search-section .btn-sec:hover{border-color:var(--accent)}
-.goals-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px}
+.flow-section{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:12px;margin-bottom:8px}
+.flow-section .hd{font-size:.65rem;font-weight:600;margin-bottom:4px;display:flex;align-items:center;gap:4px}
+.flow-section .hd span{font-size:.5rem;color:var(--muted);font-weight:400;margin-left:auto}
+textarea{width:100%;min-height:50px;padding:7px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.72rem;font-family:var(--font);outline:none;resize:vertical;margin-bottom:6px}
+textarea:focus{border-color:var(--accent)}
+.btns{display:flex;gap:6px;flex-wrap:wrap}
+.btns .pry{padding:6px 18px;border-radius:6px;border:none;background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--bg);font-size:.62rem;font-weight:700;cursor:pointer}
+.btns .pry:hover{opacity:.85}
+.btns .sec{padding:5px 12px;border-radius:5px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.55rem;cursor:pointer}
+.btns .sec:hover{border-color:var(--accent)}
+.goals-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 @media(max-width:600px){.goals-grid{grid-template-columns:1fr}}
-.goal-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:10px;cursor:pointer;transition:all .15s}
+.goal-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:10px;cursor:pointer;transition:all .15s}
 .goal-card:hover{border-color:var(--accent);background:var(--surface2)}
-.goal-card .gc-hd{font-size:.65rem;font-weight:600;display:flex;align-items:center;gap:4px;margin-bottom:3px}
-.goal-card .gc-desc{font-size:.55rem;color:var(--muted);margin-bottom:3px}
-.goal-card .gc-steps{font-size:.5rem;color:var(--muted)}
-.goal-card .gc-steps span{background:var(--surface);padding:1px 5px;border-radius:3px;margin-right:3px}
-.flow-section{display:none}
-.flow-section.active{display:block}
-.flow-header{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:6px}
-.flow-header h3{font-size:.75rem;color:var(--text2);flex:1}
-.flow-header .step-count{font-size:.55rem;color:var(--muted);background:var(--surface);padding:2px 7px;border-radius:4px}
-.step-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:6px;overflow:hidden}
-.step-card.completed{border-color:var(--green)}
-.step-card.active{border-color:var(--accent)}
-.step-card .step-hd{display:flex;align-items:center;padding:10px 12px;gap:8px}
-.step-card .step-hd .num{width:22px;height:22px;border-radius:50%;background:var(--surface);display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;color:var(--muted);flex-shrink:0}
-.step-card.active .step-hd .num{background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--bg)}
-.step-card.completed .step-hd .num{background:var(--green);color:var(--bg)}
-.step-card .step-hd .info{flex:1;min-width:0}
-.step-card .step-hd .info .sn{font-size:.65rem;font-weight:600}
-.step-card .step-hd .info .sd{font-size:.55rem;color:var(--muted)}
-.step-card .step-hd .status{font-size:.5rem;padding:2px 8px;border-radius:5px;flex-shrink:0}
-.step-card .step-hd .status.pending{background:var(--surface);color:var(--muted)}
-.step-card .step-hd .status.active{background:var(--accent);color:var(--bg);font-weight:600}
-.step-card .step-hd .status.done{background:var(--green);color:var(--bg);font-weight:600}
-.step-card .step-body{display:none;padding:0 12px 12px;border-top:1px solid var(--border)}
-.step-card.active .step-body{display:block}
-.step-card .step-body .instr{font-size:.6rem;color:var(--muted);margin-bottom:6px;line-height:1.5}
-.step-card .step-body .tool-link{display:inline-block;padding:4px 12px;border-radius:5px;background:var(--surface2);color:var(--accent);text-decoration:none;font-size:.6rem;font-weight:500;margin-bottom:6px}
-.step-card .step-body .tool-link:hover{background:var(--accent);color:var(--bg)}
-.step-card .step-body .btn-step{padding:4px 14px;border-radius:5px;border:none;background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--bg);font-size:.55rem;font-weight:700;cursor:pointer}
-.step-card .step-body .btn-step:hover{opacity:.85}
-.step-card .step-body .btn-step.done{background:var(--green)}
-.output-section{display:none;background:var(--bg2);border:2px solid var(--green);border-radius:var(--radius);padding:12px;margin-bottom:8px}
-.output-section.show{display:block}
-.output-section .hd{font-size:.65rem;font-weight:600;color:var(--green);margin-bottom:4px;display:flex;align-items:center;gap:4px}
-.output-section .desc{font-size:.55rem;color:var(--muted);margin-bottom:6px}
-.output-section .btn-save{padding:5px 16px;border-radius:6px;border:none;background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--bg);font-size:.6rem;font-weight:700;cursor:pointer}
-.output-section .btn-save:hover{opacity:.85}
-.output-section .formats{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
-.output-section .formats button{padding:3px 8px;border-radius:4px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.5rem;cursor:pointer}
-.output-section .formats button:hover{border-color:var(--accent)}
-.back-btn{padding:4px 10px;border-radius:5px;border:1px solid var(--border);background:var(--surface);color:var(--muted);font-size:.55rem;cursor:pointer}
-.back-btn:hover{border-color:var(--accent);color:var(--text)}
+.goal-card .nm{font-size:.65rem;font-weight:600;margin-bottom:2px}
+.goal-card .ds{font-size:.55rem;color:var(--muted);margin-bottom:2px}
+.goal-card .st{font-size:.5rem;color:var(--muted)}
+.goal-card .st span{background:var(--surface2);padding:1px 5px;border-radius:3px;margin-right:3px}
+.step-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:6px;overflow:hidden}
+.step-card.ok{border-color:var(--green)}
+.step-card.step-card.cur{border-color:var(--accent)}
+.step-card .sh{display:flex;align-items:center;padding:10px 12px;gap:8px}
+.step-card .sh .num{width:22px;height:22px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;color:var(--muted);flex-shrink:0}
+.step-card.cur .sh .num{background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--bg)}
+.step-card.ok .sh .num{background:var(--green);color:var(--bg)}
+.step-card .sh .info{flex:1;min-width:0}
+.step-card .sh .info .sn{font-size:.65rem;font-weight:600}
+.step-card .sh .info .sd{font-size:.55rem;color:var(--muted)}
+.step-card .sh .st2{font-size:.5rem;padding:2px 8px;border-radius:5px;flex-shrink:0;background:var(--surface2);color:var(--muted)}
+.step-card.cur .sh .st2{background:var(--accent);color:var(--bg);font-weight:600}
+.step-card.ok .sh .st2{background:var(--green);color:var(--bg);font-weight:600}
+.step-card .body{display:none;padding:0 12px 12px;border-top:1px solid var(--border)}
+.step-card.cur .body{display:block}
+.step-card .body .in{font-size:.6rem;color:var(--muted);margin-bottom:6px}
+.step-card .body .lnk{display:inline-block;padding:4px 12px;border-radius:5px;background:var(--surface2);color:var(--accent);text-decoration:none;font-size:.6rem;font-weight:500;margin-bottom:6px}
+.step-card .body .lnk:hover{background:var(--accent);color:var(--bg)}
+.step-card .body .nd{padding:4px 14px;border-radius:5px;border:none;background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--bg);font-size:.55rem;font-weight:700;cursor:pointer}
+.step-card .body .nd:hover{opacity:.85}
+.step-card .body .nd.ok{background:var(--green)}
+.out{display:none;background:var(--bg2);border:2px solid var(--green);border-radius:var(--radius);padding:12px;margin-bottom:8px}
+.out.ok{display:block}
+.out .ohd{font-size:.65rem;font-weight:600;color:var(--green);margin-bottom:4px}
+.out .ds2{font-size:.55rem;color:var(--muted);margin-bottom:6px}
+.out .dl{padding:5px 16px;border-radius:6px;border:none;background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--bg);font-size:.6rem;font-weight:700;cursor:pointer}
+.out .dl:hover{opacity:.85}
+.out .fmts{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
+.out .fmts button{padding:3px 8px;border-radius:4px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.5rem;cursor:pointer}
+.out .fmts button:hover{border-color:var(--accent)}
 footer{text-align:center;padding:14px;font-size:.55rem;color:var(--muted);border-top:1px solid var(--border);margin-top:16px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
 footer a{color:var(--muted);text-decoration:none}
 footer a:hover{color:var(--accent)}
@@ -91,191 +86,113 @@ footer a:hover{color:var(--accent)}
 <div class="app">
 <div class="hero">
 <h2>🔀 Flow Builder</h2>
-<p>Describe your goal. Get a step-by-step tool chain. Walk through each tool, collect results, and download in your format.</p>
+<p>Describe a goal. Pick a pre-built flow. Walk each step, open the linked tool, mark done. Download results.</p>
 </div>
-
-<div class="search-section">
-<textarea id="goalInput" placeholder="Describe your goal...&#10;&#10;Example: 'Convert a Markdown file to HTML, minify it, and encode it for inline use in a web page'" spellcheck="true">Convert a Markdown document to HTML, minify the output, then encode it as a URL component for embedding in a web page.</textarea>
-<div class="row">
-<button class="btn" onclick="suggestFlow()">🔀 Build Flow</button>
-<button class="btn-sec" onclick="loadSampleGoal()">📋 Sample Goals</button>
+<div class="flow-section">
+<div class="hd">1️⃣ Describe Your Goal</div>
+<textarea id="goalInput" placeholder="Describe your goal...&#10;e.g. 'Convert Markdown to HTML, minify it, and encode it'">Convert a Markdown file to HTML, minify the output, then encode for inline embedding.</textarea>
+<div class="btns">
+<button class="pry" onclick="handleBuild()">🔀 Build Flow</button>
+<button class="sec" onclick="showGoals()">📋 Browse All Flows</button>
 </div>
 </div>
-
-<div id="goalPicker" style="display:none">
-<div class="flow-header"><h3>📋 Pre-built Goals</h3><span class="step-count">Click one to start</span></div>
+<div id="goalsArea" style="display:none">
+<div class="flow-section">
+<div class="hd">📋 Pre-built Goal Flows <span>Click one to start</span></div>
 <div class="goals-grid" id="goalsGrid"></div>
 </div>
-
-<div id="flowView" class="flow-section">
-<div class="flow-header">
-<button class="back-btn" onclick="resetFlow()">← Back</button>
-<h3 id="flowTitle">Flow</h3>
-<span class="step-count" id="flowProgress">0/0 steps</span>
 </div>
-<div id="stepsContainer"></div>
+<div id="flowArea" style="display:none"></div>
+<div id="outArea" class="out"></div>
 </div>
-
-<div id="outputSection" class="output-section">
-<div class="hd">✅ Goal Complete</div>
-<div class="desc" id="outputDesc">Your flow is finished. Download your results below.</div>
-<div class="btn-save" onclick="downloadResult()">⬇ Download Result</div>
-<div class="formats">
-<button onclick="downloadAs('txt')">📄 TXT</button>
-<button onclick="downloadAs('html')">🌐 HTML</button>
-<button onclick="downloadAs('json')">📋 JSON</button>
-<button onclick="downloadAs('md')">📝 Markdown</button>
-</div>
-</div>
-</div>
-
 <footer>
-<a href="https://frantzenterprise.github.io/devtool-suite/">Hub</a> ·
-<a href="https://frantzenterprise.github.io/devtool-suite/pricing.html">Pricing</a> ·
-<a href="https://frantzenterprise.github.io/devtool-suite/privacy.html">Privacy</a> ·
-<a href="https://frantzenterprise.github.io/devtool-suite/terms.html">Terms</a> ·
-⚡ Powered by Frantz Enterprise
+<a href="https://frantzenterprise.github.io/devtool-suite/">Hub</a> · <a href="https://frantzenterprise.github.io/devtool-suite/pricing.html">Pricing</a> · <a href="https://frantzenterprise.github.io/devtool-suite/privacy.html">Privacy</a> · <a href="https://frantzenterprise.github.io/devtool-suite/terms.html">Terms</a> · ⚡ Powered by Frantz Enterprise
 </footer>
-
 <script>
-const TIER_ICON = {free:'🆓 Free',pro:'⚡ Pro',team:'🏢 Team'}
-const TIER_COLOR = {free:'#50fa7b',pro:'#ff79c6',team:'#ffb86c'}
-let tier = 'free'
-let currentFlow = null
-let currentStep = -1
-let accumulatedResult = ''
-
-const TOOLS = [
-{id:'filetrans',icon:'📎',name:'File Transformer',url:'https://frantzenterprise.github.io/devtool-filetransformer/',desc:'MD to TXT/HTML, Base64, Text to ZIP'},
-{id:'httpcodes',icon:'🌐',name:'HTTP Status Codes',url:'https://frantzenterprise.github.io/devtool-httpcodes/',desc:'63 status codes, search, filter'},
-{id:'minifier',icon:'🗜️',name:'HTML/CSS Minifier',url:'https://frantzenterprise.github.io/devtool-minifier/',desc:'Minify HTML and CSS'},
-{id:'urldecode',icon:'🔗',name:'URL Encoder/Decoder',url:'https://frantzenterprise.github.io/devtool-urldecode/',desc:'Encode, decode, query string parser'},
-{id:'baseconv',icon:'🔢',name:'Base Converter',url:'https://frantzenterprise.github.io/devtool-baseconv/',desc:'Binary, octal, decimal, hex'},
-{id:'csvviewer',icon:'📊',name:'CSV Viewer',url:'https://frantzenterprise.github.io/devtool-csvviewer/',desc:'Paste CSV, sort, search, export JSON'},
-{id:'textcleaner',icon:'🧹',name:'Text Cleaner',url:'https://frantzenterprise.github.io/devtool-textcleaner/',desc:'Trim, dedupe, sort, case'},
-{id:'passgen',icon:'🔑',name:'Password Generator',url:'https://frantzenterprise.github.io/devtool-passgen/',desc:'Strong passwords, bulk mode'},
-{id:'jsoncsv',icon:'🔄',name:'JSON ↔ CSV',url:'https://frantzenterprise.github.io/devtool-jsoncsv/',desc:'Convert between formats'},
-{id:'timestamp',icon:'🔧',name:'Timestamp Converter',url:'https://frantzenterprise.github.io/devtool-timestamp/',desc:'Unix to date, timezones'},
-{id:'diffchecker',icon:'🏳️',name:'Diff Checker',url:'https://frantzenterprise.github.io/devtool-diffchecker/',desc:'Line/word/char diff'},
-{id:'uuidgen',icon:'🔢',name:'UUID Generator',url:'https://frantzenterprise.github.io/devtool-uuidgen/',desc:'v1/v4/v7 UUIDs'},
-{id:'lorem',icon:'📝',name:'Lorem Ipsum',url:'https://frantzenterprise.github.io/devtool-loremipsum/',desc:'5 Ipsum styles'},
-{id:'regex',icon:'🔍',name:'Regex Builder',url:'https://frantzenterprise.github.io/devtool-regexbuilder/',desc:'Real-time regex tester'},
-{id:'jwt',icon:'🔐',name:'JWT Inspector',url:'https://frantzenterprise.github.io/devtool-jwtinspector/',desc:'Decode & inspect tokens'},
-{id:'palette',icon:'🎨',name:'Palette Studio',url:'https://frantzenterprise.github.io/devtool-palettestudio/',desc:'Color palette generator'},
-{id:'anim',icon:'✨',name:'Anim Studio',url:'https://frantzenterprise.github.io/devtool-animstudio/',desc:'Text & image animations'},
-{id:'git',icon:'🌿',name:'Git Builder',url:'https://frantzenterprise.github.io/devtool-gitbuilder/',desc:'Visual git commands'},
-{id:'ipnet',icon:'🌐',name:'IP Network',url:'https://frantzenterprise.github.io/devtool-ipnet/',desc:'Subnet, DNS, WHOIS'},
-{id:'crontab',icon:'⏰',name:'Crontab Guru',url:'https://frantzenterprise.github.io/devtool-crontabguru/',desc:'Visual cron builder'},
-{id:'apicalc',icon:'💰',name:'API Cost Calc',url:'https://frantzenterprise.github.io/devtool-apicalc/',desc:'Cost projection'},
-{id:'promptbench',icon:'🧪',name:'Prompt Bench',url:'https://frantzenterprise.github.io/devtool-promptbench/',desc:'Test models'},
-{id:'diffchecker',icon:'🏳️',name:'Diff Checker',url:'https://frantzenterprise.github.io/devtool-diffchecker/',desc:'Line/word/char diff'}
-]
-
-const GOALS = [
-{id:'html-email',icon:'📧',name:'HTML Email Pipeline',desc:'Convert MD to HTML → Minify → URL-encode for sending',steps:[
-{tool:'filetrans',action:'Convert Markdown to HTML (paste your MD, copy the HTML output)',expected:'HTML with basic formatting'},
-{tool:'minifier',action:'Paste the HTML. Click Minify. Copy the minified output.',expected:'Minified HTML (smaller file size)'},
-{tool:'urldecode',action:'Paste minified HTML into Encode tab. Choose Component mode. Copy the encoded result.',expected:'URL-encoded HTML string ready for email'}
-],result:'URL-encoded HTML email template ready for embedding.'},
-{id:'csv-clean',icon:'📊',name:'Clean & Export CSV',desc:'Import CSV → Clean data → Remove duplicates → Export as JSON',steps:[
-{tool:'csvviewer',action:'Paste your CSV data. Verify columns and rows. Use search to inspect data quality.',expected:'Clean CSV with correct headers'},
-{tool:'textcleaner',action:'Copy cleaned rows. Enable "Trim" and "Remove empty lines". Click Clean. Deduplicate.',expected:'Cleaned and deduplicated data'},
-{tool:'csvviewer',action:'Paste cleaned data back. Click "Show JSON" to preview. Copy the JSON output.',expected:'JSON array ready for use'}
-],result:'Clean JSON dataset from CSV. Ready for API ingestion.'},
-{id:'web-asset',icon:'🌐',name:'Web Asset Pipeline',desc:'Write MD → HTML → Minify → Encode for inline use',steps:[
-{tool:'filetrans',action:'Paste Markdown content. Select MD to HTML. Copy the HTML result.',expected:'Clean HTML output'},
-{tool:'minifier',action:'Paste HTML. Click Minify HTML. Compare size savings.',expected:'Minified HTML (~30-50% smaller)'},
-{tool:'urldecode',action:'Paste minified HTML. Click Encode (Component mode). Copy the encoded string.',expected:'URL-encoded inline HTML'}
-],result:'URL-encoded HTML ready for inline use in JS or email templates.'},
-{id:'uuid-timestamp',icon:'⏱️',name:'Timeline Analysis',desc:'Generate UUIDs → decode embedded timestamps → convert to readable dates',steps:[
-{tool:'uuidgen',action:'Generate UUID v1 and v7 (these contain timestamps). Copy them.',expected:'List of UUIDs with version identifiers'},
-{tool:'timestamp',action:'Copy decoded timestamps. Paste into Timestamp Converter for human-readable format.',expected:'Human-readable dates and times'}
-],result:'UUIDs with their embedded timestamps decoded.'},
-{id:'password-audit',icon:'🔑',name:'Password Bulk Generator',desc:'Generate strong passwords → Clean & format → Save',steps:[
-{tool:'passgen',action:'Set length 16+. Enable Upper, Lower, Digits, Symbols. Count 10. Generate.',expected:'10 strong passwords'},
-{tool:'textcleaner',action:'Copy passwords. Enable Trim. Verify no blank lines. Optionally sort.',expected:'Cleaned password list'}
-],result:'Bulk password list, cleaned and ready for distribution.'},
-{id:'color-theme',icon:'🎨',name:'Design Theme Builder',desc:'Base color → Palette → CSS variables → Clean',steps:[
-{tool:'palette',action:'Pick a base color. Toggle palette modes. Export as CSS Variables.',expected:'Color palette with 5+ colors'},
-{tool:'textcleaner',action:'Copy the CSS variables. Clean up formatting if needed.',expected:'Formatted CSS variable declarations'}
-],result:'CSS variable declarations for your palette. Ready for any stylesheet.'},
-{id:'data-validation',icon:'🔍',name:'Data Validation Pipeline',desc:'Import JSON → CSV → Review → Diff → Clean',steps:[
-{tool:'jsoncsv',action:'Paste JSON data. Convert to CSV. Review schema detection. Copy CSV.',expected:'Tabular CSV from JSON'},
-{tool:'csvviewer',action:'Paste CSV. Sort columns to spot missing values. Search for anomalies.',expected:'Reviewed and understood dataset'},
-{tool:'diffchecker',action:'Compare two versions: paste original vs cleaned. Run Line diff.',expected:'Diff showing changes between versions'}
-],result:'Validated, deduplicated dataset with change log.'},
-{id:'regex-extract',icon:'🔍',name:'Data Extraction Pipeline',desc:'Paste raw text → Build regex → Extract matches → Clean results',steps:[
-{tool:'regex',action:'Paste your raw text. Build a pattern. Verify matches highlight in real-time.',expected:'Verified regex with highlighted matches'},
-{tool:'textcleaner',action:'Copy matched results. Use Trim and Deduplicate to clean the extracted list.',expected:'Clean extracted data list'}
-],result:'Cleaned extracted data from regex matches.'},
-{id:'md-blog',icon:'📝',name:'Blog Post Pipeline',desc:'Write MD → Lorem placeholder → Convert to HTML → Minify',steps:[
-{tool:'lorem',action:'Choose an Ipsum style. Generate paragraphs for filler. Copy.',expected:'Lorem ipsum placeholder text'},
-{tool:'filetrans',action:'Combine your MD with placeholder. Convert to HTML.',expected:'Full HTML blog post'},
-{tool:'minifier',action:'Paste HTML. Minify for production. Note size reduction.',expected:'Production-ready minified HTML'}
-],result:'Minified HTML blog post ready for deployment.'},
-{id:'cron-mapping',icon:'⏰',name:'Cron Schedule Mapping',desc:'Define cron → Get human description → Add timestamps',steps:[
-{tool:'crontab',action:'Build your cron expression visually. Read the plain-English description. Note next 10 fire times.',expected:'Cron expression with human description'},
-{tool:'timestamp',action:'Convert any fire times to your local timezone.',expected:'Fire times in your timezone'}
-],result:'Cron schedule with human-readable fire times in your timezone.'},
-{id:'api-token-inspect',icon:'🔐',name:'JWT + Timestamp Chain',desc:'Inspect JWT → Check expiration → Convert timestamps',steps:[
-{tool:'jwt',action:'Paste your JWT. Inspect header and payload. Note exp and iat timestamps.',expected:'Decoded JWT payload with timestamps'},
-{tool:'timestamp',action:'Copy exp and iat from JWT. Convert to human-readable dates.',expected:'Readable expiration and issue dates'}
-],result:'JWT token analysis with expiration date and remaining time.'},
-{id:'css-pipeline',icon:'🎭',name:'CSS Theme Generation',desc:'Palette → minify CSS vars → encode',steps:[
-{tool:'palette',action:'Pick a base color. Generate palette. Export as CSS Variables.',expected:'CSS variable declarations'},
-{tool:'minifier',action:'Paste the CSS into the CSS Minifier tab. Click Minify CSS.',expected:'Minified CSS variables'},
-{tool:'urldecode',action:'Paste minified CSS. Encode as Component mode for inline use.',expected:'URL-encoded CSS for injection'}
-],result:'URL-encoded CSS theme ready for dynamic injection.'},
-{id:'jwt-replay',icon:'🔄',name:'JWT Replay Analysis',desc:'Inspect JWT → decode timestamps → generate replacement UUID',steps:[
-{tool:'jwt',action:'Paste JWT. Inspect header, payload, exp, iat. Copy expiry timestamp.',expected:'Decoded JWT with timestamps'},
-{tool:'timestamp',action:'Paste the exp timestamp. Convert to human-readable.',expected:'Readable expiry date'},
-{tool:'uuidgen',action:'Generate UUID v4 as a session replacement token.',expected:'Fresh session UUID'}
-],result:'JWT analysis with expiry time and replacement token.'},
-{id:'text-inspect',icon:'🔬',name:'Text Audit & Diff',desc:'Clean text → compare original vs cleaned',steps:[
-{tool:'textcleaner',action:'Paste text. Enable Trim, Remove empty lines, Deduplicate. Click Clean.',expected:'Cleaned text'},
-{tool:'diffchecker',action:'Paste original on left, cleaned on right. Run Line diff.',expected:'Visual diff of changes'}
-],result:'Original vs cleaned text comparison with audit trail.'},
-{id:'api-request',icon:'🌐',name:'API Request Builder',desc:'Build URL → encode params → minify body → check status codes',steps:[
-{tool:'urldecode',action:'Build your API URL. Use Encode on query param values.',expected:'Properly encoded API URL'},
-{tool:'minifier',action:'If sending HTML/JSON body: paste and minify the body.',expected:'Minified request body'},
-{tool:'httpcodes',action:'Look up expected response status codes for your API call.',expected:'Status code reference'}
-],result:'Clean API URL, minified body, and expected status codes.'},
-{id:'data-migration',icon:'📦',name:'Data Format Migration',desc:'JSON → CSV → review → diff → corrected JSON',steps:[
-{tool:'jsoncsv',action:'Paste JSON data. Convert to CSV. Copy the CSV output.',expected:'Tabular CSV'},
-{tool:'csvviewer',action:'Paste CSV. Sort, search, verify data integrity.',expected:'Reviewed dataset'},
-{tool:'diffchecker',action:'Compare original CSV vs corrected version.',expected:'Change log'},
-{tool:'jsoncsv',action:'Paste corrected CSV. Convert to JSON. Copy final JSON.',expected:'Corrected JSON'}
-],result:'Migrated and verified data in JSON format.'},
-{id:'timeline-report',icon:'📅',name:'Event Timeline Report',desc:'Generate timestamps → add UUIDs → build report',steps:[
-{tool:'timestamp',action:'Generate timestamps for past/future events in various timezones.',expected:'List of timestamps'},
-{tool:'uuidgen',action:'Generate UUIDs as event identifiers for each timestamp.',expected:'UUID-timestamp pairs'},
-{tool:'textcleaner',action:'Paste pairs. Clean formatting, sort by date.',expected:'Sorted event timeline'}
-],result:'Structured event timeline with UUIDs and dates.'},
-{id:'cron-password',icon:'⏰',name:'Automated Password Rotation',desc:'Build cron schedule → generate passwords → document',steps:[
-{tool:'crontab',action:'Build cron expression for weekly/monthly password rotation.',expected:'Cron schedule'},
-{tool:'passgen',action:'Generate 5 strong passwords (length 20+, all char sets).',expected:'5 strong passwords'},
-{tool:'textcleaner',action:'Paste passwords. Clean format. Add rotation schedule as header.',expected:'Rotation document'}
-],result:'Password rotation plan with cron schedule and passwords.'},
-{id:'regex-clean',icon:'🧹',name:'Regex Extraction & Cleaning',desc:'Extract patterns → clean results → audit diff',steps:[
-{tool:'regex',action:'Paste source text. Build pattern to extract target data.',expected:'Extracted matches'},
-{tool:'textcleaner',action:'Paste extracted matches. Trim, deduplicate, sort.',expected:'Cleaned extracted data'},
-{tool:'diffchecker',action:'Compare raw extracted list vs cleaned list.',expected:'Cleaning audit diff'}
-],result:'Cleaned regex-extracted data with audit trail.'},
-{id:'minified-deploy',icon:'🚀',name:'HTML Deployment Prep',desc:'MD → HTML → minify → encode → status check',steps:[
-{tool:'filetrans',action:'Paste Markdown. Convert to HTML.',expected:'HTML content'},
-{tool:'minifier',action:'Paste HTML. Click Minify. Compare size reduction.',expected:'Minified HTML'},
-{tool:'urldecode',action:'If embedding: encode minified HTML as URL component.',expected:'Encoded HTML'},
-{tool:'httpcodes',action:'Check common deployment status codes for reference.',expected:'Status reference'}
-],result:'Production-ready HTML, optionally encoded.'},
-{id:'css-color-audit',icon:'🎨',name:'CSS Color Audit Pipeline',desc:'Generate palettes → compare via diff → export clean CSS',steps:[
-{tool:'palette',action:'Generate 2-3 palettes from different base colors. Export as CSS.',expected:'Multiple CSS variable sets'},
-{tool:'diffchecker',action:'Compare two palette CSS exports side-by-side. Pick the best.',expected:'Selected palette diff'},
-{tool:'textcleaner',action:'Paste winning CSS. Clean whitespace and formatting.',expected:'Final clean CSS variables'}
-],result:'Audited CSS color palette with comparison notes.'}
-];
-const i=tiers.indexOf(tier);tier=tiers[(i+1)%3]
-const b=document.getElementById('tierBadge')
-b.textContent=TIER_ICON[tier];b.style.color=TIER_COLOR[tier];b.style.background=TIER_COLOR[tier]+'20'
+var tier='free',curFlow=null,curStep=-1,acc=''
+function T(i){return {free:'🆓 Free',pro:'⚡ Pro',team:'🏢 Team'}[i]}
+function C(i){return {free:'#50fa7b',pro:'#ff79c6',team:'#ffb86c'}[i]}
+function cycleTier(){var a=['free','pro','team'],b=a[(a.indexOf(tier)+1)%3];tier=b;var e=document.getElementById('tierBadge');e.textContent=T(b);e.style.color=C(b);e.style.background=C(b)+'20'}
+var TU=[{i:'filetrans',n:'File Transformer',u:'https://frantzenterprise.github.io/devtool-filetransformer/'},{i:'minifier',n:'HTML/CSS Minifier',u:'https://frantzenterprise.github.io/devtool-minifier/'},{i:'urldecode',n:'URL Encoder/Decoder',u:'https://frantzenterprise.github.io/devtool-urldecode/'},{i:'csvviewer',n:'CSV Viewer',u:'https://frantzenterprise.github.io/devtool-csvviewer/'},{i:'textcleaner',n:'Text Cleaner',u:'https://frantzenterprise.github.io/devtool-textcleaner/'},{i:'passgen',n:'Password Generator',u:'https://frantzenterprise.github.io/devtool-passgen/'},{i:'uuidgen',n:'UUID Generator',u:'https://frantzenterprise.github.io/devtool-uuidgen/'},{i:'timestamp',n:'Timestamp Converter',u:'https://frantzenterprise.github.io/devtool-timestamp/'},{i:'lorem',n:'Lorem Ipsum',u:'https://frantzenterprise.github.io/devtool-loremipsum/'},{i:'palette',n:'Palette Studio',u:'https://frantzenterprise.github.io/devtool-palettestudio/'},{i:'regex',n:'Regex Builder',u:'https://frantzenterprise.github.io/devtool-regexbuilder/'},{i:'diffchecker',n:'Diff Checker',u:'https://frantzenterprise.github.io/devtool-diffchecker/'},{i:'jsoncsv',n:'JSON ↔ CSV',u:'https://frantzenterprise.github.io/devtool-jsoncsv/'},{i:'jwt',n:'JWT Inspector',u:'https://frantzenterprise.github.io/devtool-jwtinspector/'},{i:'crontab',n:'Crontab Guru',u:'https://frantzenterprise.github.io/devtool-crontabguru/'},{i:'httpcodes',n:'HTTP Status Codes',u:'https://frantzenterprise.github.io/devtool-httpcodes/'}]
+function tn(i){var t=TU.find(function(x){return x.i===i});return t?t.n:'Tool'}
+function tu(i){var t=TU.find(function(x){return x.i===i});return t?t.u:'#'}
+function handleBuild(){var g=document.getElementById('goalInput').value.trim();if(!g){alert('Describe your goal first.');return};showGoals()}
+function showGoals(){document.getElementById('goalsArea').style.display='block';document.getElementById('goalInput').disabled=true}
+var GS=[{ic:'📧',nm:'HTML Email Pipeline',ds:'MD → HTML → Minify → URL-encode for sending',st:[['filetrans','Convert Markdown to HTML. Paste your MD, copy the HTML output.','HTML with basic formatting'],['minifier','Paste the HTML. Click Minify HTML. Copy the minified output.','Minified HTML (~30-50% smaller)'],['urldecode','Paste minified HTML into Encode tab (Component mode). Copy.','URL-encoded HTML ready for email']],rs:'URL-encoded HTML email template ready for embedding.'},
+{ic:'📊',nm:'Clean & Export CSV',ds:'Import CSV → Clean → Deduplicate → Export JSON',st:[['csvviewer','Paste your CSV. Verify columns and rows. Use search.','Clean CSV with correct headers'],['textcleaner','Copy rows. Enable Trim + Remove empty + Deduplicate.','Cleaned and deduplicated data'],['csvviewer','Paste cleaned data back. Click Show JSON. Copy.','JSON array ready for use']],rs:'Clean JSON dataset from CSV.'},
+{ic:'🌐',nm:'Web Asset Pipeline',ds:'Write MD → HTML → Minify → Encode for inline use',st:[['filetrans','Paste Markdown. Select MD to HTML. Copy result.','Clean HTML output'],['minifier','Paste HTML. Click Minify HTML.','Minified HTML'],['urldecode','Paste minified HTML. Encode (Component mode). Copy.','URL-encoded inline HTML']],rs:'URL-encoded HTML ready for inline use.'},
+{ic:'⏱️',nm:'Timeline Analysis',ds:'Generate UUIDs → decode timestamps → human-readable dates',st:[['uuidgen','Generate UUID v1 and v7. Copy them.','UUIDs with version IDs'],['timestamp','Paste decoded timestamps. Convert to human-readable.','Readable dates and times']],rs:'UUIDs with decoded timestamps.'},
+{ic:'🔑',nm:'Password Bulk Generator',ds:'Generate strong passwords → Clean & format',st:[['passgen','Length 16+, all char sets. Count 10. Generate. Copy.','10 strong passwords'],['textcleaner','Paste passwords. Trim. Sort if needed.','Cleaned password list']],rs:'Bulk password list.'},
+{ic:'🎨',nm:'Design Theme Builder',ds:'Base color → Palette → CSS variables',st:[['palette','Pick a base color. Toggle palette modes. Export CSS vars.','Color palette with 5+ colors'],['textcleaner','Copy CSS vars. Clean formatting.','Formatted CSS variables']],rs:'CSS variable declarations.'},
+{ic:'🔍',nm:'Data Validation Pipeline',ds:'JSON → CSV → Review → Diff → Clean',st:[['jsoncsv','Paste JSON. Convert to CSV. Copy.','Tabular CSV'],['csvviewer','Paste CSV. Sort, search, inspect.','Reviewed dataset'],['diffchecker','Paste original vs cleaned. Run Line diff.','Diff showing changes']],rs:'Validated dataset with change log.'},
+{ic:'🔍',nm:'Data Extraction Pipeline',ds:'Raw text → Regex → Extract → Clean',st:[['regex','Paste text. Build pattern. Verify matches highlight.','Verified regex with matches'],['textcleaner','Copy matches. Trim, Deduplicate.','Clean extracted data list']],rs:'Cleaned regex-extracted data.'},
+{ic:'📝',nm:'Blog Post Pipeline',ds:'Lorem placeholder → MD → HTML → Minify',st:[['lorem','Choose style. Generate paragraphs. Copy.','Lorem ipsum text'],['filetrans','Combine MD + placeholder. Convert to HTML.','Full HTML post'],['minifier','Paste HTML. Minify.','Minified HTML']],rs:'Minified HTML blog post.'},
+{ic:'⏰',nm:'Cron Schedule Mapping',ds:'Build cron → Get description → Add timestamps',st:[['crontab','Build expression. Read description. Note next 10 fire times.','Cron expression + description'],['timestamp','Convert fire times to your timezone.','Fire times in your timezone']],rs:'Cron schedule with fire times.'},
+{ic:'🔐',nm:'JWT + Timestamp Chain',ds:'Inspect JWT → Check expiration → Convert timestamps',st:[['jwt','Paste JWT. Inspect payload. Note exp/iat timestamps.','Decoded JWT with timestamps'],['timestamp','Copy exp/iat. Convert to readable.','Readable dates']],rs:'JWT analysis with expiration.'},
+{ic:'🎭',nm:'CSS Theme Generation',ds:'Palette → Minify CSS → Encode for injection',st:[['palette','Pick a color. Generate palette. Export as CSS vars.','CSS variable set'],['minifier','Paste CSS. Click Minify CSS.','Minified CSS vars'],['urldecode','Paste minified CSS. Encode (Component mode). Copy.','URL-encoded CSS']],rs:'URL-encoded CSS theme for injection.'},
+{ic:'🔄',nm:'JWT Replay Analysis',ds:'Inspect JWT → decode timestamps → generate UUID replacement',st:[['jwt','Paste JWT. Inspect header, payload, exp, iat.','Decoded JWT'],['timestamp','Copy exp. Convert to human-readable.','Readable expiry'],['uuidgen','Generate UUID v4 as session replacement token.','Fresh UUID']],rs:'JWT analysis + replacement token.'},
+{ic:'🔬',nm:'Text Audit & Diff',ds:'Clean text → Compare original vs cleaned',st:[['textcleaner','Paste text. Enable Trim + Remove empty. Click Clean.','Cleaned text'],['diffchecker','Paste original left, cleaned right. Run Line diff.','Visual diff']],rs:'Cleaned text with audit diff.'},
+{ic:'🌐',nm:'API Request Builder',ds:'Build URL → Encode params → Minify body → Check status',st:[['urldecode','Build API URL. Encode query parameter values.','Encoded API URL'],['minifier','Paste HTML/JSON body. Minify.','Minified body'],['httpcodes','Look up expected status codes.','Status code reference']],rs:'Clean API request with status ref.'},
+{ic:'📦',nm:'Data Format Migration',ds:'JSON → CSV → Review → Diff → Corrected JSON',st:[['jsoncsv','Paste JSON. Convert to CSV. Copy.','Tabular CSV'],['csvviewer','Paste CSV. Sort, verify integrity.','Reviewed dataset'],['diffchecker','Original vs corrected. Run diff.','Change log'],['jsoncsv','Paste corrected CSV. Convert to JSON.','Corrected JSON']],rs:'Migrated data in JSON.'},
+{ic:'📅',nm:'Event Timeline Report',ds:'Generate timestamps → UUID events → Sorted timeline',st:[['timestamp','Generate timestamps in various timezones.','List of timestamps'],['uuidgen','Generate UUID event IDs for each.','UUID-timestamp pairs'],['textcleaner','Paste pairs. Sort, clean formatting.','Sorted event timeline']],rs:'Structured timeline with UUIDs.'},
+{ic:'⏰',nm:'Password Rotation Scheduler',ds:'Cron schedule → Bulk passwords → Rotation doc',st:[['crontab','Build weekly/monthly rotation cron expression.','Cron schedule'],['passgen','Generate 5 strong passwords (20+ chars).','5 strong passwords'],['textcleaner','Paste passwords. Clean. Add schedule header.','Rotation document']],rs:'Password rotation plan.'},
+{ic:'🧹',nm:'Regex Extraction & Clean',ds:'Extract patterns → Clean results → Audit diff',st:[['regex','Paste source. Build pattern. Extract matches.','Extracted matches'],['textcleaner','Paste matches. Trim, deduplicate, sort.','Cleaned data'],['diffchecker','Raw vs cleaned. Run diff.','Cleaning audit']],rs:'Cleaned data with audit trail.'},
+{ic:'🚀',nm:'HTML Deployment Prep',ds:'MD → HTML → Minify → Encode → Status check',st:[['filetrans','Paste Markdown. Convert to HTML.','HTML content'],['minifier','Paste HTML. Minify.','Minified HTML'],['urldecode','If needed: encode as URL component. Copy.','Encoded HTML'],['httpcodes','Check deployment status codes.','Status reference']],rs:'Production-ready HTML.'},
+{ic:'🎨',nm:'CSS Color Audit',ds:'Generate palettes → Compare → Export clean CSS',st:[['palette','Generate 2-3 palettes. Export as CSS vars.','Multiple CSS sets'],['diffchecker','Compare two sets side-by-side. Pick best.','Selected diff'],['textcleaner','Paste winning CSS. Clean formatting.','Final clean CSS']],rs:'Audited CSS palette.'}];
+// Set up grid
+var grid=document.getElementById('goalsGrid');
+var h='';GS.forEach(function(g,i){h+='<div class="goal-card" onclick="startGoal('+i+')"><div class="nm">'+g.ic+' '+g.nm+'</div><div class="ds">'+g.ds+'</div><div class="st">'+(g.st.map(function(){return '<span>Step</span>'}).join(' '))+'</div></div>'});
+grid.innerHTML=h;
+// Goal count display
+var ct=document.querySelector('.flow-section .hd span');
+if(ct)ct.textContent='('+(GS.length)+' flows)';
+function startGoal(idx){
+curFlow=GS[idx];curStep=0;acc='';
+document.getElementById('goalsArea').style.display='none';
+var fa=document.getElementById('flowArea');fa.style.display='block';
+var h2='<div class="flow-section"><div class="hd">'+curFlow.ic+' '+curFlow.nm+' <span id="flowProg">0/'+curFlow.st.length+' steps</span></div><div id="stepsArea"></div><div style="margin-top:6px"><button class="sec" onclick="resetFlow()">← Back to flows</button></div></div>';
+fa.innerHTML=h2;renderSteps();activateStep(0);
+var out=document.getElementById('outArea');out.style.display='none';out.className='out';
 }
+function renderSteps(){
+var sa=document.getElementById('stepsArea');
+var h='';curFlow.st.forEach(function(s,i){
+h+='<div class="step-card" id="sc'+i+'"><div class="sh"><div class="num">'+(i+1)+'</div><div class="info"><div class="sn">'+tn(s[0])+'</div><div class="sd">'+s[1].substring(0,60)+'...</div></div><div class="st2" id="st2'+i+'">⏳ Pending</div></div><div class="body"><div class="in">'+s[1]+'</div><a class="lnk" href="'+tu(s[0])+'" target="_blank">🚀 Open '+tn(s[0])+' →</a><br><button class="nd" id="nd'+i+'" onclick="markDone('+i+')">✅ Done — I completed this step</button></div></div>'
+});sa.innerHTML=h;
+}
+function activateStep(i){
+if(i>=curFlow.st.length){finishFlow();return}
+curStep=i;
+var cards=document.querySelectorAll('.step-card');
+cards.forEach(function(c){c.className='step-card'});
+var card=document.getElementById('sc'+i);if(card){card.className='step-card cur';card.scrollIntoView({behavior:'smooth',block:'center'})}
+var st=document.getElementById('st2'+i);if(st){st.textContent='⚡ Active';st.className='st2 cur'}
+document.getElementById('flowProg').textContent=i+'/'+curFlow.st.length+' steps';
+}
+function markDone(i){
+if(i!==curStep)return;
+var card=document.getElementById('sc'+i);if(card)card.className='step-card ok';
+var st=document.getElementById('st2'+i);if(st){st.textContent='✅ Done';st.className='st2 ok'}
+var btn=document.getElementById('nd'+i);if(btn){btn.textContent='✅ Completed';btn.disabled=true;btn.style.opacity='.5';btn.className='nd ok'}
+acc+='[Step '+(i+1)+': '+curFlow.st[i][0]+'] Completed.\n';
+activateStep(i+1);
+}
+function finishFlow(){
+document.getElementById('flowProg').textContent='✅ Complete';
+var out=document.getElementById('outArea');out.style.display='block';out.className='out ok';
+out.innerHTML='<div class="ohd">✅ Goal Complete</div><div class="ds2">'+curFlow.nm+' is finished. Download results below.</div><button class="dl" onclick="downloadResult()">⬇ Download Result</button><div class="fmts"><button onclick="downAs(\'txt\')">📄 TXT</button><button onclick="downAs(\'html\')">🌐 HTML</button><button onclick="downAs(\'json\')">📋 JSON</button><button onclick="downAs(\'md\')">📝 MD</button></div>';
+}
+function downloadResult(){
+var t='# '+curFlow.nm+' - Flow Result\n## Description: '+curFlow.ds+'\n\n## Steps\n';curFlow.st.forEach(function(s,i){t+='### '+(i+1)+'. '+tn(s[0])+'\n- Action: '+s[1]+'\n- Result: '+s[2]+'\n\n'});t+='\n## Summary\n'+curFlow.rs+'\n';acc=t;
+var b=new Blob([t],{type:'text/plain'});var u=URL.createObjectURL(b);var a=document.createElement('a');a.href=u;a.download='flow-result.txt';a.click();URL.revokeObjectURL(u)
+}
+function downAs(f){
+var t='';if(f==='txt'){t=acc||'No data.';dl(t,'flow-result.txt','text/plain')}
+if(f==='html'){t='<!DOCTYPE html><html><head><title>'+curFlow.nm+'</title></head><body><h1>'+curFlow.nm+'</h1><pre>'+(acc||'')+'</pre></body></html>';dl(t,'flow-result.html','text/html')}
+if(f==='json'){t=JSON.stringify({goal:curFlow.nm,description:curFlow.ds,steps:curFlow.st.map(function(s){return{tool:tn(s[0]),action:s[1],expected:s[2]}}),result:curFlow.rs});dl(t,'flow-result.json','application/json')}
+if(f==='md'){t='# '+curFlow.nm+'\n\n'+curFlow.ds+'\n\n## Steps\n'+curFlow.st.map(function(s,i){return (i+1)+'. **'+tn(s[0])+'**: '+s[1];}).join('\n')+'\n\n## Result\n'+curFlow.rs;dl(t,'flow-result.md','text/markdown')}
+}
+function dl(c,n,t){var b=new Blob([c],{type:t});var u=URL.createObjectURL(b);var a=document.createElement('a');a.href=u;a.download=n;a.click();URL.revokeObjectURL(u)}
+function resetFlow(){curFlow=null;curStep=-1;acc='';document.getElementById('flowArea').style.display='none';document.getElementById('goalsArea').style.display='block'}
 </script>
 </body></html>
