@@ -1,0 +1,398 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Flow Builder — Frantz DevTool Suite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#282a36;--bg2:#21222c;--surface:#44475a;--surface2:#383a4a;--text:#f8f8f2;--text2:#bd93f9;--muted:#6272a4;--accent:#bd93f9;--accent2:#ff79c6;--green:#50fa7b;--orange:#ffb86c;--red:#ff5555;--gold:#f1fa8c;--cyan:#8be9fd;--border:#44475a;--radius:10px;--font:'Inter',sans-serif;--mono:'JetBrains Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--surface);border-radius:3px}
+.app{max-width:820px;margin:0 auto;padding:54px 12px 30px}
+.top{position:fixed;top:0;left:0;right:0;height:44px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 12px;z-index:100;gap:8px}
+.top .brand{font-weight:700;font-size:.75rem;display:flex;align-items:center;gap:4px;flex-shrink:0}
+.top .brand span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.top .links{margin-left:auto;display:flex;gap:4px}
+.top .links a{text-decoration:none;font-size:.5rem;padding:3px 7px;border-radius:4px;color:var(--muted)}
+.top .links a:hover{color:var(--text);background:var(--surface)}
+.tier{font-size:.5rem;padding:2px 8px;border-radius:8px;cursor:pointer;background:#50fa7b20;color:var(--green);font-weight:600}
+h1{font-size:1.1rem;color:var(--text2);margin-bottom:2px;display:flex;align-items:center;gap:6px}
+.sub{font-size:.65rem;color:var(--muted);margin-bottom:8px}
+.hero{text-align:center;padding:24px 12px;border-bottom:1px solid var(--border);margin-bottom:10px}
+.hero h2{font-size:.9rem;color:var(--text);margin-bottom:4px}
+.hero p{font-size:.6rem;color:var(--muted);max-width:500px;margin:0 auto}
+.search-section{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:12px;margin-bottom:8px}
+.search-section textarea{width:100%;min-height:60px;padding:7px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.72rem;font-family:var(--font);outline:none;resize:vertical;margin-bottom:6px}
+.search-section textarea:focus{border-color:var(--accent)}
+.search-section .row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.search-section .btn{padding:6px 18px;border-radius:6px;border:none;background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--bg);font-size:.62rem;font-weight:700;cursor:pointer}
+.search-section .btn:hover{opacity:.85}
+.search-section .btn-sec{padding:5px 12px;border-radius:5px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.55rem;cursor:pointer}
+.search-section .btn-sec:hover{border-color:var(--accent)}
+.goals-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px}
+@media(max-width:600px){.goals-grid{grid-template-columns:1fr}}
+.goal-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:10px;cursor:pointer;transition:all .15s}
+.goal-card:hover{border-color:var(--accent);background:var(--surface2)}
+.goal-card .gc-hd{font-size:.65rem;font-weight:600;display:flex;align-items:center;gap:4px;margin-bottom:3px}
+.goal-card .gc-desc{font-size:.55rem;color:var(--muted);margin-bottom:3px}
+.goal-card .gc-steps{font-size:.5rem;color:var(--muted)}
+.goal-card .gc-steps span{background:var(--surface);padding:1px 5px;border-radius:3px;margin-right:3px}
+.flow-section{display:none}
+.flow-section.active{display:block}
+.flow-header{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:6px}
+.flow-header h3{font-size:.75rem;color:var(--text2);flex:1}
+.flow-header .step-count{font-size:.55rem;color:var(--muted);background:var(--surface);padding:2px 7px;border-radius:4px}
+.step-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:6px;overflow:hidden}
+.step-card.completed{border-color:var(--green)}
+.step-card.active{border-color:var(--accent)}
+.step-card .step-hd{display:flex;align-items:center;padding:10px 12px;gap:8px}
+.step-card .step-hd .num{width:22px;height:22px;border-radius:50%;background:var(--surface);display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;color:var(--muted);flex-shrink:0}
+.step-card.active .step-hd .num{background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--bg)}
+.step-card.completed .step-hd .num{background:var(--green);color:var(--bg)}
+.step-card .step-hd .info{flex:1;min-width:0}
+.step-card .step-hd .info .sn{font-size:.65rem;font-weight:600}
+.step-card .step-hd .info .sd{font-size:.55rem;color:var(--muted)}
+.step-card .step-hd .status{font-size:.5rem;padding:2px 8px;border-radius:5px;flex-shrink:0}
+.step-card .step-hd .status.pending{background:var(--surface);color:var(--muted)}
+.step-card .step-hd .status.active{background:var(--accent);color:var(--bg);font-weight:600}
+.step-card .step-hd .status.done{background:var(--green);color:var(--bg);font-weight:600}
+.step-card .step-body{display:none;padding:0 12px 12px;border-top:1px solid var(--border)}
+.step-card.active .step-body{display:block}
+.step-card .step-body .instr{font-size:.6rem;color:var(--muted);margin-bottom:6px;line-height:1.5}
+.step-card .step-body .tool-link{display:inline-block;padding:4px 12px;border-radius:5px;background:var(--surface2);color:var(--accent);text-decoration:none;font-size:.6rem;font-weight:500;margin-bottom:6px}
+.step-card .step-body .tool-link:hover{background:var(--accent);color:var(--bg)}
+.step-card .step-body .btn-step{padding:4px 14px;border-radius:5px;border:none;background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--bg);font-size:.55rem;font-weight:700;cursor:pointer}
+.step-card .step-body .btn-step:hover{opacity:.85}
+.step-card .step-body .btn-step.done{background:var(--green)}
+.output-section{display:none;background:var(--bg2);border:2px solid var(--green);border-radius:var(--radius);padding:12px;margin-bottom:8px}
+.output-section.show{display:block}
+.output-section .hd{font-size:.65rem;font-weight:600;color:var(--green);margin-bottom:4px;display:flex;align-items:center;gap:4px}
+.output-section .desc{font-size:.55rem;color:var(--muted);margin-bottom:6px}
+.output-section .btn-save{padding:5px 16px;border-radius:6px;border:none;background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--bg);font-size:.6rem;font-weight:700;cursor:pointer}
+.output-section .btn-save:hover{opacity:.85}
+.output-section .formats{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
+.output-section .formats button{padding:3px 8px;border-radius:4px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:.5rem;cursor:pointer}
+.output-section .formats button:hover{border-color:var(--accent)}
+.back-btn{padding:4px 10px;border-radius:5px;border:1px solid var(--border);background:var(--surface);color:var(--muted);font-size:.55rem;cursor:pointer}
+.back-btn:hover{border-color:var(--accent);color:var(--text)}
+footer{text-align:center;padding:14px;font-size:.55rem;color:var(--muted);border-top:1px solid var(--border);margin-top:16px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--accent)}
+</style>
+</head><body>
+<div class="top">
+<div class="brand">🔀 <span>Flow Builder</span></div>
+<div class="links">
+<a href="https://frantzenterprise.github.io/devtool-suite/">Hub</a>
+<a href="https://frantzenterprise.github.io/devtool-suite/pricing.html">Pricing</a>
+</div>
+<span class="tier" id="tierBadge" onclick="cycleTier()">🆓 Free</span>
+</div>
+<div class="app">
+<div class="hero">
+<h2>🔀 Flow Builder</h2>
+<p>Describe your goal. Get a step-by-step tool chain. Walk through each tool, collect results, and download in your format.</p>
+</div>
+
+<div class="search-section">
+<textarea id="goalInput" placeholder="Describe your goal...&#10;&#10;Example: 'Convert a Markdown file to HTML, minify it, and encode it for inline use in a web page'" spellcheck="true">Convert a Markdown document to HTML, minify the output, then encode it as a URL component for embedding in a web page.</textarea>
+<div class="row">
+<button class="btn" onclick="suggestFlow()">🔀 Build Flow</button>
+<button class="btn-sec" onclick="loadSampleGoal()">📋 Sample Goals</button>
+</div>
+</div>
+
+<div id="goalPicker" style="display:none">
+<div class="flow-header"><h3>📋 Pre-built Goals</h3><span class="step-count">Click one to start</span></div>
+<div class="goals-grid" id="goalsGrid"></div>
+</div>
+
+<div id="flowView" class="flow-section">
+<div class="flow-header">
+<button class="back-btn" onclick="resetFlow()">← Back</button>
+<h3 id="flowTitle">Flow</h3>
+<span class="step-count" id="flowProgress">0/0 steps</span>
+</div>
+<div id="stepsContainer"></div>
+</div>
+
+<div id="outputSection" class="output-section">
+<div class="hd">✅ Goal Complete</div>
+<div class="desc" id="outputDesc">Your flow is finished. Download your results below.</div>
+<div class="btn-save" onclick="downloadResult()">⬇ Download Result</div>
+<div class="formats">
+<button onclick="downloadAs('txt')">📄 TXT</button>
+<button onclick="downloadAs('html')">🌐 HTML</button>
+<button onclick="downloadAs('json')">📋 JSON</button>
+<button onclick="downloadAs('md')">📝 Markdown</button>
+</div>
+</div>
+</div>
+
+<footer>
+<a href="https://frantzenterprise.github.io/devtool-suite/">Hub</a> ·
+<a href="https://frantzenterprise.github.io/devtool-suite/pricing.html">Pricing</a> ·
+<a href="https://frantzenterprise.github.io/devtool-suite/privacy.html">Privacy</a> ·
+<a href="https://frantzenterprise.github.io/devtool-suite/terms.html">Terms</a> ·
+⚡ Powered by Frantz Enterprise
+</footer>
+
+<script>
+const TIER_ICON = {free:'🆓 Free',pro:'⚡ Pro',team:'🏢 Team'}
+const TIER_COLOR = {free:'#50fa7b',pro:'#ff79c6',team:'#ffb86c'}
+let tier = 'free'
+let currentFlow = null
+let currentStep = -1
+let accumulatedResult = ''
+
+const TOOLS = [
+{id:'filetrans',icon:'📎',name:'File Transformer',url:'https://frantzenterprise.github.io/devtool-filetransformer/',desc:'MD to TXT/HTML, Base64, Text to ZIP'},
+{id:'httpcodes',icon:'🌐',name:'HTTP Status Codes',url:'https://frantzenterprise.github.io/devtool-httpcodes/',desc:'63 status codes, search, filter'},
+{id:'minifier',icon:'🗜️',name:'HTML/CSS Minifier',url:'https://frantzenterprise.github.io/devtool-minifier/',desc:'Minify HTML and CSS'},
+{id:'urldecode',icon:'🔗',name:'URL Encoder/Decoder',url:'https://frantzenterprise.github.io/devtool-urldecode/',desc:'Encode, decode, query string parser'},
+{id:'baseconv',icon:'🔢',name:'Base Converter',url:'https://frantzenterprise.github.io/devtool-baseconv/',desc:'Binary, octal, decimal, hex'},
+{id:'csvviewer',icon:'📊',name:'CSV Viewer',url:'https://frantzenterprise.github.io/devtool-csvviewer/',desc:'Paste CSV, sort, search, export JSON'},
+{id:'textcleaner',icon:'🧹',name:'Text Cleaner',url:'https://frantzenterprise.github.io/devtool-textcleaner/',desc:'Trim, dedupe, sort, case'},
+{id:'passgen',icon:'🔑',name:'Password Generator',url:'https://frantzenterprise.github.io/devtool-passgen/',desc:'Strong passwords, bulk mode'},
+{id:'jsoncsv',icon:'🔄',name:'JSON ↔ CSV',url:'https://frantzenterprise.github.io/devtool-jsoncsv/',desc:'Convert between formats'},
+{id:'timestamp',icon:'🔧',name:'Timestamp Converter',url:'https://frantzenterprise.github.io/devtool-timestamp/',desc:'Unix to date, timezones'},
+{id:'diffchecker',icon:'🏳️',name:'Diff Checker',url:'https://frantzenterprise.github.io/devtool-diffchecker/',desc:'Line/word/char diff'},
+{id:'uuidgen',icon:'🔢',name:'UUID Generator',url:'https://frantzenterprise.github.io/devtool-uuidgen/',desc:'v1/v4/v7 UUIDs'},
+{id:'lorem',icon:'📝',name:'Lorem Ipsum',url:'https://frantzenterprise.github.io/devtool-loremipsum/',desc:'5 Ipsum styles'},
+{id:'regex',icon:'🔍',name:'Regex Builder',url:'https://frantzenterprise.github.io/devtool-regexbuilder/',desc:'Real-time regex tester'},
+{id:'jwt',icon:'🔐',name:'JWT Inspector',url:'https://frantzenterprise.github.io/devtool-jwtinspector/',desc:'Decode & inspect tokens'},
+{id:'palette',icon:'🎨',name:'Palette Studio',url:'https://frantzenterprise.github.io/devtool-palettestudio/',desc:'Color palette generator'},
+{id:'anim',icon:'✨',name:'Anim Studio',url:'https://frantzenterprise.github.io/devtool-animstudio/',desc:'Text & image animations'},
+{id:'git',icon:'🌿',name:'Git Builder',url:'https://frantzenterprise.github.io/devtool-gitbuilder/',desc:'Visual git commands'},
+{id:'ipnet',icon:'🌐',name:'IP Network',url:'https://frantzenterprise.github.io/devtool-ipnet/',desc:'Subnet, DNS, WHOIS'},
+{id:'crontab',icon:'⏰',name:'Crontab Guru',url:'https://frantzenterprise.github.io/devtool-crontabguru/',desc:'Visual cron builder'},
+{id:'apicalc',icon:'💰',name:'API Cost Calc',url:'https://frantzenterprise.github.io/devtool-apicalc/',desc:'Cost projection'},
+{id:'promptbench',icon:'🧪',name:'Prompt Bench',url:'https://frantzenterprise.github.io/devtool-promptbench/',desc:'Test models'},
+{id:'diffchecker',icon:'🏳️',name:'Diff Checker',url:'https://frantzenterprise.github.io/devtool-diffchecker/',desc:'Line/word/char diff'}
+]
+
+const GOALS = [
+{id:'html-email',icon:'📧',name:'HTML Email Pipeline',desc:'Convert MD to HTML email → Inline CSS → Minify → URL-encode for sending',steps:[
+{tool:'filetrans',action:'Convert Markdown to HTML (paste your MD, copy the HTML output)',expected:'HTML with basic formatting'},
+{tool:'minifier',action:'Paste the HTML into the Minifier tab. Click Minify. Copy the minified output.',expected:'Minified HTML (smaller file size)'},
+{tool:'urldecode',action:'Paste the minified HTML into the Encode tab. Choose Component mode. Copy the encoded result.',expected:'URL-encoded HTML string ready for email'}
+],result:'URL-encoded HTML email template ready for embedding. Copy the final string into your email API.'},
+{id:'csv-clean',icon:'📊',name:'Clean & Export CSV',desc:'Import CSV → Clean data → Remove duplicates → Export as JSON',steps:[
+{tool:'csvviewer',action:'Paste your CSV data. Verify columns and rows. Use search to inspect data quality.',expected:'Clean CSV with correct headers'},
+{tool:'textcleaner',action:'Copy cleaned rows. Turn on "Trim" and "Remove empty lines". Click Clean. Deduplicate if needed.',expected:'Cleaned and deduplicated data'},
+{tool:'csvviewer',action:'Paste the cleaned data back. Click "Show JSON" to preview. Copy the JSON output.',expected:'JSON array ready for use'}
+],result:'Clean JSON dataset exported from CSV. Ready for API ingestion or database import.'},
+{id:'web-asset',icon:'🌐',name:'Web Asset Pipeline',desc:'Write Markdown → Convert to HTML → Minify → Encode for inline use',steps:[
+{tool:'filetrans',action:'Paste Markdown content. Select MD to HTML conversion. Copy the HTML result.',expected:'Clean HTML output'},
+{tool:'minifier',action:'Paste HTML. Click Minify HTML. Compare size savings.',expected:'Minimized HTML (~30-50% smaller)'},
+{tool:'urldecode',action:'Paste minified HTML. Click Encode (Component mode). Copy the encoded string.',expected:'URL-encoded inline HTML'}
+],result:'URL-encoded HTML ready for inline use in JavaScript or email templates.'},
+{id:'uuid-timestamp',icon:'⏱️',name:'Timeline Analysis',desc:'Generate UUIDs → decode embedded timestamps → convert to readable dates',steps:[
+{tool:'uuidgen',action:'Generate UUID v1 and v7 (these contain timestamps). Copy them.',expected:'List of UUIDs with version identifiers'},
+{tool:'timestamp',action:'Copy decoded timestamps from UUIDs. Paste into Timestamp Converter for human-readable format.',expected:'Human-readable dates and times'}
+],result:'UUIDs with their embedded timestamps decoded to human-readable dates.'},
+{id:'password-audit',icon:'🔑',name:'Password Bulk Generator',desc:'Generate multiple strong passwords → Clean & format → Save',steps:[
+{tool:'passgen',action:'Set length (16+). Enable: Upper, Lower, Digits, Symbols. Set Count to 10. Click Generate.',expected:'10 strong passwords'},
+{tool:'textcleaner',action:'Copy passwords. Turn on Trim. Verify no blank lines. Optionally sort.',expected:'Cleaned password list'},
+{tool:'passgen',action:'Switch to bulk mode if you need more. Generate up to 50. Copy all.',expected:'Up to 50 strong passwords'}
+],result:'Bulk password list, cleaned and ready for distribution.'},
+{id:'color-theme',icon:'🎨',name:'Design Theme Builder',desc:'Choose base color → Generate palette → Convert to CSS variables → Save',steps:[
+{tool:'palette',action:'Pick a base color. Toggle palette modes (Complementary, Analogous, Triadic). Export as CSS Variables.',expected:'Color palette with 5+ colors'},
+{tool:'textcleaner',action:'Copy the CSS variables. Clean up formatting if needed.',expected:'Formatted CSS variable declarations'}
+],result:'CSS variable declarations for your color palette. Ready to drop into any stylesheet.'},
+{id:'data-validation',icon:'🔍',name:'Data Validation Pipeline',desc:'Import JSON → Convert to CSV → Review differences → Clean duplicates',steps:[
+{tool:'jsoncsv',action:'Paste JSON data. Convert to CSV. Review schema detection. Copy CSV.',expected:'Tabular CSV from JSON'},
+{tool:'csvviewer',action:'Paste CSV. Sort columns to spot missing values. Search for anomalies.',expected:'Reviewed and understood dataset'},
+{tool:'diffchecker',action:'If comparing two versions: paste original vs cleaned. Run Line diff.',expected:'Diff showing changes between versions'}
+],result:'Validated, deduplicated dataset with change log.'},
+{id:'regex-extract',icon:'🔍',name:'Data Extraction Pipeline',desc:'Paste raw text → Build regex pattern → Extract matches → Clean results',steps:[
+{tool:'regex',action:'Paste your raw text. Build a pattern using the Quick Builder or cheat sheet. Verify matches highlight in real-time.',expected:'Verified regex pattern with matches highlighted'},
+{tool:'textcleaner',action:'Copy the matched results. Use Trim and Deduplicate to clean the extracted list.',expected:'Clean extracted data list'}
+],result:'Cleaned extracted data from regex matches.'},
+{id:'md-blog',icon:'📝',name:'Blog Post Pipeline',desc:'Write MD → Generate Lorem placeholder → Convert to HTML → Minify',steps:[
+{tool:'lorem',action:'Choose an Ipsum style and output format. Generate paragraphs for filler content. Copy.',expected:'Lorem ipsum placeholder text'},
+{tool:'filetrans',action:'Combine your MD with placeholder. Convert to HTML.',expected:'Full HTML blog post'},
+{tool:'minifier',action:'Paste HTML. Minify for production. Note the size reduction.',expected:'Production-ready minified HTML'}
+],result:'Minified HTML blog post template. Ready for production deployment.'},
+{id:'cron-mapping',icon:'⏰',name:'Cron Schedule Mapping',desc:'Define cron schedule → Get human description → Add timestamps',steps:[
+{tool:'crontab',action:'Build your cron expression visually. Read the plain-English description. Note next 10 fire times.',expected:'Cron expression with human description'},
+{tool:'timestamp',action:'Convert any fire times to your local timezone for scheduling.',expected:'Fire times in your local timezone'}
+],result:'Cron schedule documentation with human-readable fire times in your timezone.'},
+{id:'api-token-inspect',icon:'🔐',name:'JWT + Timestamp Chain',desc:'Inspect JWT token → Check expiration → Convert timestamps',steps:[
+{tool:'jwt',action:'Paste your JWT. Inspect header and payload. Note the exp and iat timestamps.',expected:'Decoded JWT payload with timestamps'},
+{tool:'timestamp',action:'Copy exp and iat from JWT. Convert to human-readable dates.',expected:'Readable expiration and issue dates'}
+],result:'JWT token analysis with expiration date and time remaining.'},
+{id:'custom',icon:'✨',name:'Custom Flow',desc:'Describe any goal and get a custom tool chain',steps:[
+{tool:'urldecode',action:'This is a placeholder step. The AI-generated flow will appear here based on your goal description.',expected:'Follow the generated instructions'}
+],result:'Custom flow result. Check each step for output.'}
+]
+
+function suggestFlow(){
+const goal=document.getElementById('goalInput').value.trim()
+if(!goal){alert('Describe your goal first.');return}
+// Find best match or use custom
+const lower=goal.toLowerCase()
+let match=null;let bestScore=0
+for(const g of GOALS){
+let score=0
+const keywords=g.desc.toLowerCase().split(' ')
+for(const kw of keywords){
+if(kw.length<3)continue
+if(lower.includes(kw))score+=2
+}
+if(g.name.toLowerCase().split(' ').some(w=>w.length>3&&lower.includes(w)))score+=3
+if(score>bestScore){bestScore=score;match=g}
+}
+if(match&&bestScore>=3){
+startFlow(match)
+}else{
+// Custom flow - show goals grid to pick manually
+showGoalPicker()
+}
+}
+
+function showGoalPicker(){
+document.getElementById('goalPicker').style.display='block'
+const grid=document.getElementById('goalsGrid')
+grid.innerHTML=GOALS.map(g=>`<div class="goal-card" onclick="startFlow(${JSON.stringify(g).replace(/"/g,'&quot;')})"><div class="gc-hd">${g.icon} ${g.name}</div><div class="gc-desc">${g.desc}</div><div class="gc-steps">${g.steps.map((_,i)=>'<span>Step '+(i+1)+'</span>').join('')}</div></div>`).join('')
+}
+
+function loadSampleGoal(){
+const samples=GOALS.map(g=>`${g.icon} ${g.name}: ${g.desc}`).join('\n')
+const grid=document.getElementById('goalsGrid')
+grid.innerHTML=GOALS.map(g=>`<div class="goal-card" onclick="startFlowFromGoal('${g.id}')"><div class="gc-hd">${g.icon} ${g.name}</div><div class="gc-desc">${g.desc}</div><div class="gc-steps">${g.steps.map((_,i)=>'<span>Step '+(i+1)+'</span>').join('')}</div></div>`).join('')
+document.getElementById('goalPicker').style.display='block'
+}
+
+function startFlowFromGoal(id){
+const goal=GOALS.find(g=>g.id===id)
+if(goal)startFlow(goal)
+}
+
+function startFlow(goal){
+currentFlow=goal
+currentStep=0
+accumulatedResult=''
+document.getElementById('goalPicker').style.display='none'
+document.getElementById('flowView').classList.add('active')
+document.getElementById('outputSection').classList.remove('show')
+document.getElementById('flowTitle').textContent=`${goal.icon} ${goal.name}`
+document.getElementById('flowProgress').textContent=`0/${goal.steps.length} steps`
+renderSteps()
+activateStep(0)
+}
+
+function renderSteps(){
+const goal=currentFlow
+const container=document.getElementById('stepsContainer')
+container.innerHTML=goal.steps.map((step,i)=>{
+const tool=TOOLS.find(t=>t.id===step.tool)
+return `<div class="step-card" id="step-${i}" data-idx="${i}">
+<div class="step-hd">
+<div class="num">${i+1}</div>
+<div class="info">
+<div class="sn">${tool?tool.icon+' '+tool.name:'🔧 Tool'}</div>
+<div class="sd">${step.action.substring(0,60)}${step.action.length>60?'...':''}</div>
+</div>
+<div class="status pending" id="status-${i}">⏳ Pending</div>
+</div>
+<div class="step-body">
+<div class="instr">${step.action}</div>
+${tool?`<a href="${tool.url}" class="tool-link" target="_blank">🚀 Open ${tool.name} →</a>`:''}
+<br><button class="btn-step" id="btn-${i}" onclick="completeStep(${i})">✅ Done — I completed this step</button>
+</div>
+</div>`
+}).join('')
+}
+
+function activateStep(idx){
+if(idx>=currentFlow.steps.length){
+finishFlow()
+return
+}
+currentStep=idx
+// Deactivate all
+document.querySelectorAll('.step-card').forEach(c=>{c.classList.remove('active');c.classList.remove('completed')})
+document.querySelectorAll('.status').forEach(s=>{s.textContent='⏳ Pending';s.className='status pending'})
+// Activate current
+const card=document.getElementById(`step-${idx}`)
+if(card){card.classList.add('active');card.scrollIntoView({behavior:'smooth',block:'center'})}
+const st=document.getElementById(`status-${idx}`)
+if(st){st.textContent='⚡ Active';st.className='status active'}
+document.getElementById('flowProgress').textContent=`${idx}/${currentFlow.steps.length} steps`
+}
+
+function completeStep(idx){
+if(idx!==currentStep)return
+// Mark complete
+const card=document.getElementById(`step-${idx}`)
+if(card){card.classList.remove('active');card.classList.add('completed')}
+const st=document.getElementById(`status-${idx}`)
+if(st){st.textContent='✅ Done';st.className='status done'}
+const btn=document.getElementById(`btn-${idx}`)
+if(btn){btn.textContent='✅ Completed';btn.disabled=true;btn.style.opacity='.5'}
+accumulatedResult+=`[Step ${idx+1}: ${currentFlow.steps[idx].action}]\n`
+activateStep(idx+1)
+}
+
+function finishFlow(){
+document.getElementById('flowProgress').textContent=`✅ Complete`
+document.getElementById('outputSection').classList.add('show')
+document.getElementById('outputDesc').textContent=`${currentFlow.name} complete! Your results are ready.`
+}
+
+function downloadResult(){
+let output=''
+output+=`# Flow Builder Result\n`
+output+=`## Goal: ${currentFlow.name}\n`
+output+=`## Description: ${currentFlow.desc}\n\n`
+output+=`## Steps Completed:\n`
+currentFlow.steps.forEach((s,i)=>{
+const tool=TOOLS.find(t=>t.id===s.tool)
+output+=`### Step ${i+1}: ${tool?tool.name:'Tool'}\n- Action: ${s.action}\n- Tool: ${tool?tool.url:'N/A'}\n- Result: ${accumulatedResult.split('\n').filter(l=>l.includes(`[Step ${i+1}`))[0]||'Completed'}\n\n`
+})
+output+=`\n## Final Summary\n`
+output+=`Goal: ${currentFlow.desc}\n`
+output+=`Result: ${currentFlow.result}\n`
+accumulatedResult=output
+const blob=new Blob([output],{type:'text/plain'})
+const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='flow-result.txt';a.click();URL.revokeObjectURL(url)
+}
+
+function downloadAs(format){
+let content=''
+const title=currentFlow?currentFlow.name:'Flow Result'
+if(format==='txt'){
+content=accumulatedResult||'No data generated.'
+downloadFile(content,'flow-result.txt','text/plain')
+}else if(format==='html'){
+content=`<!DOCTYPE html><html><head><title>${title}</title></head><body><h1>${title}</h1><pre>${accumulatedResult||''}</pre></body></html>`
+downloadFile(content,'flow-result.html','text/html')
+}else if(format==='json'){
+const json=JSON.stringify({goal:currentFlow?currentFlow.name:'Flow',description:currentFlow?currentFlow.desc:'',steps:currentFlow?currentFlow.steps:[],result:currentFlow?currentFlow.result:''})
+downloadFile(json,'flow-result.json','application/json')
+}else if(format==='md'){
+content=`# ${title}\n\n${currentFlow?currentFlow.desc:''}\n\n## Steps\n${currentFlow?currentFlow.steps.map((s,i)=>`${i+1}. **${s.action}**`).join('\n'):''}\n\n## Result\n${currentFlow?currentFlow.result:''}`
+downloadFile(content,'flow-result.md','text/markdown')
+}
+}
+
+function downloadFile(content,name,type){
+const blob=new Blob([content],{type});const url=URL.createObjectURL(blob)
+const a=document.createElement('a');a.href=url;a.download=name;a.click();URL.revokeObjectURL(url)
+}
+
+function resetFlow(){
+currentFlow=null;currentStep=-1;accumulatedResult=''
+document.getElementById('flowView').classList.remove('active')
+document.getElementById('outputSection').classList.remove('show')
+document.getElementById('goalPicker').style.display='block'
+}
+
+function cycleTier(){
+const tiers=['free','pro','team'];const i=tiers.indexOf(tier);tier=tiers[(i+1)%3]
+const b=document.getElementById('tierBadge')
+b.textContent=TIER_ICON[tier];b.style.color=TIER_COLOR[tier];b.style.background=TIER_COLOR[tier]+'20'
+}
+</script>
+</body></html>
