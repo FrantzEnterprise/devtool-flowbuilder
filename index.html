@@ -172,225 +172,107 @@ const TOOLS = [
 ]
 
 const GOALS = [
-{id:'html-email',icon:'📧',name:'HTML Email Pipeline',desc:'Convert MD to HTML email → Inline CSS → Minify → URL-encode for sending',steps:[
+{id:'html-email',icon:'📧',name:'HTML Email Pipeline',desc:'Convert MD to HTML → Minify → URL-encode for sending',steps:[
 {tool:'filetrans',action:'Convert Markdown to HTML (paste your MD, copy the HTML output)',expected:'HTML with basic formatting'},
-{tool:'minifier',action:'Paste the HTML into the Minifier tab. Click Minify. Copy the minified output.',expected:'Minified HTML (smaller file size)'},
-{tool:'urldecode',action:'Paste the minified HTML into the Encode tab. Choose Component mode. Copy the encoded result.',expected:'URL-encoded HTML string ready for email'}
-],result:'URL-encoded HTML email template ready for embedding. Copy the final string into your email API.'},
+{tool:'minifier',action:'Paste the HTML. Click Minify. Copy the minified output.',expected:'Minified HTML (smaller file size)'},
+{tool:'urldecode',action:'Paste minified HTML into Encode tab. Choose Component mode. Copy the encoded result.',expected:'URL-encoded HTML string ready for email'}
+],result:'URL-encoded HTML email template ready for embedding.'},
 {id:'csv-clean',icon:'📊',name:'Clean & Export CSV',desc:'Import CSV → Clean data → Remove duplicates → Export as JSON',steps:[
 {tool:'csvviewer',action:'Paste your CSV data. Verify columns and rows. Use search to inspect data quality.',expected:'Clean CSV with correct headers'},
-{tool:'textcleaner',action:'Copy cleaned rows. Turn on "Trim" and "Remove empty lines". Click Clean. Deduplicate if needed.',expected:'Cleaned and deduplicated data'},
-{tool:'csvviewer',action:'Paste the cleaned data back. Click "Show JSON" to preview. Copy the JSON output.',expected:'JSON array ready for use'}
-],result:'Clean JSON dataset exported from CSV. Ready for API ingestion or database import.'},
-{id:'web-asset',icon:'🌐',name:'Web Asset Pipeline',desc:'Write Markdown → Convert to HTML → Minify → Encode for inline use',steps:[
-{tool:'filetrans',action:'Paste Markdown content. Select MD to HTML conversion. Copy the HTML result.',expected:'Clean HTML output'},
-{tool:'minifier',action:'Paste HTML. Click Minify HTML. Compare size savings.',expected:'Minimized HTML (~30-50% smaller)'},
+{tool:'textcleaner',action:'Copy cleaned rows. Enable "Trim" and "Remove empty lines". Click Clean. Deduplicate.',expected:'Cleaned and deduplicated data'},
+{tool:'csvviewer',action:'Paste cleaned data back. Click "Show JSON" to preview. Copy the JSON output.',expected:'JSON array ready for use'}
+],result:'Clean JSON dataset from CSV. Ready for API ingestion.'},
+{id:'web-asset',icon:'🌐',name:'Web Asset Pipeline',desc:'Write MD → HTML → Minify → Encode for inline use',steps:[
+{tool:'filetrans',action:'Paste Markdown content. Select MD to HTML. Copy the HTML result.',expected:'Clean HTML output'},
+{tool:'minifier',action:'Paste HTML. Click Minify HTML. Compare size savings.',expected:'Minified HTML (~30-50% smaller)'},
 {tool:'urldecode',action:'Paste minified HTML. Click Encode (Component mode). Copy the encoded string.',expected:'URL-encoded inline HTML'}
-],result:'URL-encoded HTML ready for inline use in JavaScript or email templates.'},
+],result:'URL-encoded HTML ready for inline use in JS or email templates.'},
 {id:'uuid-timestamp',icon:'⏱️',name:'Timeline Analysis',desc:'Generate UUIDs → decode embedded timestamps → convert to readable dates',steps:[
 {tool:'uuidgen',action:'Generate UUID v1 and v7 (these contain timestamps). Copy them.',expected:'List of UUIDs with version identifiers'},
-{tool:'timestamp',action:'Copy decoded timestamps from UUIDs. Paste into Timestamp Converter for human-readable format.',expected:'Human-readable dates and times'}
-],result:'UUIDs with their embedded timestamps decoded to human-readable dates.'},
-{id:'password-audit',icon:'🔑',name:'Password Bulk Generator',desc:'Generate multiple strong passwords → Clean & format → Save',steps:[
-{tool:'passgen',action:'Set length (16+). Enable: Upper, Lower, Digits, Symbols. Set Count to 10. Click Generate.',expected:'10 strong passwords'},
-{tool:'textcleaner',action:'Copy passwords. Turn on Trim. Verify no blank lines. Optionally sort.',expected:'Cleaned password list'},
-{tool:'passgen',action:'Switch to bulk mode if you need more. Generate up to 50. Copy all.',expected:'Up to 50 strong passwords'}
+{tool:'timestamp',action:'Copy decoded timestamps. Paste into Timestamp Converter for human-readable format.',expected:'Human-readable dates and times'}
+],result:'UUIDs with their embedded timestamps decoded.'},
+{id:'password-audit',icon:'🔑',name:'Password Bulk Generator',desc:'Generate strong passwords → Clean & format → Save',steps:[
+{tool:'passgen',action:'Set length 16+. Enable Upper, Lower, Digits, Symbols. Count 10. Generate.',expected:'10 strong passwords'},
+{tool:'textcleaner',action:'Copy passwords. Enable Trim. Verify no blank lines. Optionally sort.',expected:'Cleaned password list'}
 ],result:'Bulk password list, cleaned and ready for distribution.'},
-{id:'color-theme',icon:'🎨',name:'Design Theme Builder',desc:'Choose base color → Generate palette → Convert to CSS variables → Save',steps:[
-{tool:'palette',action:'Pick a base color. Toggle palette modes (Complementary, Analogous, Triadic). Export as CSS Variables.',expected:'Color palette with 5+ colors'},
+{id:'color-theme',icon:'🎨',name:'Design Theme Builder',desc:'Base color → Palette → CSS variables → Clean',steps:[
+{tool:'palette',action:'Pick a base color. Toggle palette modes. Export as CSS Variables.',expected:'Color palette with 5+ colors'},
 {tool:'textcleaner',action:'Copy the CSS variables. Clean up formatting if needed.',expected:'Formatted CSS variable declarations'}
-],result:'CSS variable declarations for your color palette. Ready to drop into any stylesheet.'},
-{id:'data-validation',icon:'🔍',name:'Data Validation Pipeline',desc:'Import JSON → Convert to CSV → Review differences → Clean duplicates',steps:[
+],result:'CSS variable declarations for your palette. Ready for any stylesheet.'},
+{id:'data-validation',icon:'🔍',name:'Data Validation Pipeline',desc:'Import JSON → CSV → Review → Diff → Clean',steps:[
 {tool:'jsoncsv',action:'Paste JSON data. Convert to CSV. Review schema detection. Copy CSV.',expected:'Tabular CSV from JSON'},
 {tool:'csvviewer',action:'Paste CSV. Sort columns to spot missing values. Search for anomalies.',expected:'Reviewed and understood dataset'},
-{tool:'diffchecker',action:'If comparing two versions: paste original vs cleaned. Run Line diff.',expected:'Diff showing changes between versions'}
+{tool:'diffchecker',action:'Compare two versions: paste original vs cleaned. Run Line diff.',expected:'Diff showing changes between versions'}
 ],result:'Validated, deduplicated dataset with change log.'},
-{id:'regex-extract',icon:'🔍',name:'Data Extraction Pipeline',desc:'Paste raw text → Build regex pattern → Extract matches → Clean results',steps:[
-{tool:'regex',action:'Paste your raw text. Build a pattern using the Quick Builder or cheat sheet. Verify matches highlight in real-time.',expected:'Verified regex pattern with matches highlighted'},
-{tool:'textcleaner',action:'Copy the matched results. Use Trim and Deduplicate to clean the extracted list.',expected:'Clean extracted data list'}
+{id:'regex-extract',icon:'🔍',name:'Data Extraction Pipeline',desc:'Paste raw text → Build regex → Extract matches → Clean results',steps:[
+{tool:'regex',action:'Paste your raw text. Build a pattern. Verify matches highlight in real-time.',expected:'Verified regex with highlighted matches'},
+{tool:'textcleaner',action:'Copy matched results. Use Trim and Deduplicate to clean the extracted list.',expected:'Clean extracted data list'}
 ],result:'Cleaned extracted data from regex matches.'},
-{id:'md-blog',icon:'📝',name:'Blog Post Pipeline',desc:'Write MD → Generate Lorem placeholder → Convert to HTML → Minify',steps:[
-{tool:'lorem',action:'Choose an Ipsum style and output format. Generate paragraphs for filler content. Copy.',expected:'Lorem ipsum placeholder text'},
+{id:'md-blog',icon:'📝',name:'Blog Post Pipeline',desc:'Write MD → Lorem placeholder → Convert to HTML → Minify',steps:[
+{tool:'lorem',action:'Choose an Ipsum style. Generate paragraphs for filler. Copy.',expected:'Lorem ipsum placeholder text'},
 {tool:'filetrans',action:'Combine your MD with placeholder. Convert to HTML.',expected:'Full HTML blog post'},
-{tool:'minifier',action:'Paste HTML. Minify for production. Note the size reduction.',expected:'Production-ready minified HTML'}
-],result:'Minified HTML blog post template. Ready for production deployment.'},
-{id:'cron-mapping',icon:'⏰',name:'Cron Schedule Mapping',desc:'Define cron schedule → Get human description → Add timestamps',steps:[
+{tool:'minifier',action:'Paste HTML. Minify for production. Note size reduction.',expected:'Production-ready minified HTML'}
+],result:'Minified HTML blog post ready for deployment.'},
+{id:'cron-mapping',icon:'⏰',name:'Cron Schedule Mapping',desc:'Define cron → Get human description → Add timestamps',steps:[
 {tool:'crontab',action:'Build your cron expression visually. Read the plain-English description. Note next 10 fire times.',expected:'Cron expression with human description'},
-{tool:'timestamp',action:'Convert any fire times to your local timezone for scheduling.',expected:'Fire times in your local timezone'}
-],result:'Cron schedule documentation with human-readable fire times in your timezone.'},
-{id:'api-token-inspect',icon:'🔐',name:'JWT + Timestamp Chain',desc:'Inspect JWT token → Check expiration → Convert timestamps',steps:[
-{tool:'jwt',action:'Paste your JWT. Inspect header and payload. Note the exp and iat timestamps.',expected:'Decoded JWT payload with timestamps'},
+{tool:'timestamp',action:'Convert any fire times to your local timezone.',expected:'Fire times in your timezone'}
+],result:'Cron schedule with human-readable fire times in your timezone.'},
+{id:'api-token-inspect',icon:'🔐',name:'JWT + Timestamp Chain',desc:'Inspect JWT → Check expiration → Convert timestamps',steps:[
+{tool:'jwt',action:'Paste your JWT. Inspect header and payload. Note exp and iat timestamps.',expected:'Decoded JWT payload with timestamps'},
 {tool:'timestamp',action:'Copy exp and iat from JWT. Convert to human-readable dates.',expected:'Readable expiration and issue dates'}
-],result:'JWT token analysis with expiration date and time remaining.'},
-{id:'custom',icon:'✨',name:'Custom Flow',desc:'Describe any goal and get a custom tool chain',steps:[
-{tool:'urldecode',action:'This is a placeholder step. The AI-generated flow will appear here based on your goal description.',expected:'Follow the generated instructions'}
-],result:'Custom flow result. Check each step for output.'}
-]
-
-function suggestFlow(){
-const goal=document.getElementById('goalInput').value.trim()
-if(!goal){alert('Describe your goal first.');return}
-// Find best match or use custom
-const lower=goal.toLowerCase()
-let match=null;let bestScore=0
-for(const g of GOALS){
-let score=0
-const keywords=g.desc.toLowerCase().split(' ')
-for(const kw of keywords){
-if(kw.length<3)continue
-if(lower.includes(kw))score+=2
-}
-if(g.name.toLowerCase().split(' ').some(w=>w.length>3&&lower.includes(w)))score+=3
-if(score>bestScore){bestScore=score;match=g}
-}
-if(match&&bestScore>=3){
-startFlow(match)
-}else{
-// Custom flow - show goals grid to pick manually
-showGoalPicker()
-}
-}
-
-function showGoalPicker(){
-document.getElementById('goalPicker').style.display='block'
-const grid=document.getElementById('goalsGrid')
-grid.innerHTML=GOALS.map(g=>`<div class="goal-card" onclick="startFlow(${JSON.stringify(g).replace(/"/g,'&quot;')})"><div class="gc-hd">${g.icon} ${g.name}</div><div class="gc-desc">${g.desc}</div><div class="gc-steps">${g.steps.map((_,i)=>'<span>Step '+(i+1)+'</span>').join('')}</div></div>`).join('')
-}
-
-function loadSampleGoal(){
-const samples=GOALS.map(g=>`${g.icon} ${g.name}: ${g.desc}`).join('\n')
-const grid=document.getElementById('goalsGrid')
-grid.innerHTML=GOALS.map(g=>`<div class="goal-card" onclick="startFlowFromGoal('${g.id}')"><div class="gc-hd">${g.icon} ${g.name}</div><div class="gc-desc">${g.desc}</div><div class="gc-steps">${g.steps.map((_,i)=>'<span>Step '+(i+1)+'</span>').join('')}</div></div>`).join('')
-document.getElementById('goalPicker').style.display='block'
-}
-
-function startFlowFromGoal(id){
-const goal=GOALS.find(g=>g.id===id)
-if(goal)startFlow(goal)
-}
-
-function startFlow(goal){
-currentFlow=goal
-currentStep=0
-accumulatedResult=''
-document.getElementById('goalPicker').style.display='none'
-document.getElementById('flowView').classList.add('active')
-document.getElementById('outputSection').classList.remove('show')
-document.getElementById('flowTitle').textContent=`${goal.icon} ${goal.name}`
-document.getElementById('flowProgress').textContent=`0/${goal.steps.length} steps`
-renderSteps()
-activateStep(0)
-}
-
-function renderSteps(){
-const goal=currentFlow
-const container=document.getElementById('stepsContainer')
-container.innerHTML=goal.steps.map((step,i)=>{
-const tool=TOOLS.find(t=>t.id===step.tool)
-return `<div class="step-card" id="step-${i}" data-idx="${i}">
-<div class="step-hd">
-<div class="num">${i+1}</div>
-<div class="info">
-<div class="sn">${tool?tool.icon+' '+tool.name:'🔧 Tool'}</div>
-<div class="sd">${step.action.substring(0,60)}${step.action.length>60?'...':''}</div>
-</div>
-<div class="status pending" id="status-${i}">⏳ Pending</div>
-</div>
-<div class="step-body">
-<div class="instr">${step.action}</div>
-${tool?`<a href="${tool.url}" class="tool-link" target="_blank">🚀 Open ${tool.name} →</a>`:''}
-<br><button class="btn-step" id="btn-${i}" onclick="completeStep(${i})">✅ Done — I completed this step</button>
-</div>
-</div>`
-}).join('')
-}
-
-function activateStep(idx){
-if(idx>=currentFlow.steps.length){
-finishFlow()
-return
-}
-currentStep=idx
-// Deactivate all
-document.querySelectorAll('.step-card').forEach(c=>{c.classList.remove('active');c.classList.remove('completed')})
-document.querySelectorAll('.status').forEach(s=>{s.textContent='⏳ Pending';s.className='status pending'})
-// Activate current
-const card=document.getElementById(`step-${idx}`)
-if(card){card.classList.add('active');card.scrollIntoView({behavior:'smooth',block:'center'})}
-const st=document.getElementById(`status-${idx}`)
-if(st){st.textContent='⚡ Active';st.className='status active'}
-document.getElementById('flowProgress').textContent=`${idx}/${currentFlow.steps.length} steps`
-}
-
-function completeStep(idx){
-if(idx!==currentStep)return
-// Mark complete
-const card=document.getElementById(`step-${idx}`)
-if(card){card.classList.remove('active');card.classList.add('completed')}
-const st=document.getElementById(`status-${idx}`)
-if(st){st.textContent='✅ Done';st.className='status done'}
-const btn=document.getElementById(`btn-${idx}`)
-if(btn){btn.textContent='✅ Completed';btn.disabled=true;btn.style.opacity='.5'}
-accumulatedResult+=`[Step ${idx+1}: ${currentFlow.steps[idx].action}]\n`
-activateStep(idx+1)
-}
-
-function finishFlow(){
-document.getElementById('flowProgress').textContent=`✅ Complete`
-document.getElementById('outputSection').classList.add('show')
-document.getElementById('outputDesc').textContent=`${currentFlow.name} complete! Your results are ready.`
-}
-
-function downloadResult(){
-let output=''
-output+=`# Flow Builder Result\n`
-output+=`## Goal: ${currentFlow.name}\n`
-output+=`## Description: ${currentFlow.desc}\n\n`
-output+=`## Steps Completed:\n`
-currentFlow.steps.forEach((s,i)=>{
-const tool=TOOLS.find(t=>t.id===s.tool)
-output+=`### Step ${i+1}: ${tool?tool.name:'Tool'}\n- Action: ${s.action}\n- Tool: ${tool?tool.url:'N/A'}\n- Result: ${accumulatedResult.split('\n').filter(l=>l.includes(`[Step ${i+1}`))[0]||'Completed'}\n\n`
-})
-output+=`\n## Final Summary\n`
-output+=`Goal: ${currentFlow.desc}\n`
-output+=`Result: ${currentFlow.result}\n`
-accumulatedResult=output
-const blob=new Blob([output],{type:'text/plain'})
-const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='flow-result.txt';a.click();URL.revokeObjectURL(url)
-}
-
-function downloadAs(format){
-let content=''
-const title=currentFlow?currentFlow.name:'Flow Result'
-if(format==='txt'){
-content=accumulatedResult||'No data generated.'
-downloadFile(content,'flow-result.txt','text/plain')
-}else if(format==='html'){
-content=`<!DOCTYPE html><html><head><title>${title}</title></head><body><h1>${title}</h1><pre>${accumulatedResult||''}</pre></body></html>`
-downloadFile(content,'flow-result.html','text/html')
-}else if(format==='json'){
-const json=JSON.stringify({goal:currentFlow?currentFlow.name:'Flow',description:currentFlow?currentFlow.desc:'',steps:currentFlow?currentFlow.steps:[],result:currentFlow?currentFlow.result:''})
-downloadFile(json,'flow-result.json','application/json')
-}else if(format==='md'){
-content=`# ${title}\n\n${currentFlow?currentFlow.desc:''}\n\n## Steps\n${currentFlow?currentFlow.steps.map((s,i)=>`${i+1}. **${s.action}**`).join('\n'):''}\n\n## Result\n${currentFlow?currentFlow.result:''}`
-downloadFile(content,'flow-result.md','text/markdown')
-}
-}
-
-function downloadFile(content,name,type){
-const blob=new Blob([content],{type});const url=URL.createObjectURL(blob)
-const a=document.createElement('a');a.href=url;a.download=name;a.click();URL.revokeObjectURL(url)
-}
-
-function resetFlow(){
-currentFlow=null;currentStep=-1;accumulatedResult=''
-document.getElementById('flowView').classList.remove('active')
-document.getElementById('outputSection').classList.remove('show')
-document.getElementById('goalPicker').style.display='block'
-}
-
-function cycleTier(){
-const tiers=['free','pro','team'];const i=tiers.indexOf(tier);tier=tiers[(i+1)%3]
+],result:'JWT token analysis with expiration date and remaining time.'},
+{id:'css-pipeline',icon:'🎭',name:'CSS Theme Generation',desc:'Palette → minify CSS vars → encode',steps:[
+{tool:'palette',action:'Pick a base color. Generate palette. Export as CSS Variables.',expected:'CSS variable declarations'},
+{tool:'minifier',action:'Paste the CSS into the CSS Minifier tab. Click Minify CSS.',expected:'Minified CSS variables'},
+{tool:'urldecode',action:'Paste minified CSS. Encode as Component mode for inline use.',expected:'URL-encoded CSS for injection'}
+],result:'URL-encoded CSS theme ready for dynamic injection.'},
+{id:'jwt-replay',icon:'🔄',name:'JWT Replay Analysis',desc:'Inspect JWT → decode timestamps → generate replacement UUID',steps:[
+{tool:'jwt',action:'Paste JWT. Inspect header, payload, exp, iat. Copy expiry timestamp.',expected:'Decoded JWT with timestamps'},
+{tool:'timestamp',action:'Paste the exp timestamp. Convert to human-readable.',expected:'Readable expiry date'},
+{tool:'uuidgen',action:'Generate UUID v4 as a session replacement token.',expected:'Fresh session UUID'}
+],result:'JWT analysis with expiry time and replacement token.'},
+{id:'text-inspect',icon:'🔬',name:'Text Audit & Diff',desc:'Clean text → compare original vs cleaned',steps:[
+{tool:'textcleaner',action:'Paste text. Enable Trim, Remove empty lines, Deduplicate. Click Clean.',expected:'Cleaned text'},
+{tool:'diffchecker',action:'Paste original on left, cleaned on right. Run Line diff.',expected:'Visual diff of changes'}
+],result:'Original vs cleaned text comparison with audit trail.'},
+{id:'api-request',icon:'🌐',name:'API Request Builder',desc:'Build URL → encode params → minify body → check status codes',steps:[
+{tool:'urldecode',action:'Build your API URL. Use Encode on query param values.',expected:'Properly encoded API URL'},
+{tool:'minifier',action:'If sending HTML/JSON body: paste and minify the body.',expected:'Minified request body'},
+{tool:'httpcodes',action:'Look up expected response status codes for your API call.',expected:'Status code reference'}
+],result:'Clean API URL, minified body, and expected status codes.'},
+{id:'data-migration',icon:'📦',name:'Data Format Migration',desc:'JSON → CSV → review → diff → corrected JSON',steps:[
+{tool:'jsoncsv',action:'Paste JSON data. Convert to CSV. Copy the CSV output.',expected:'Tabular CSV'},
+{tool:'csvviewer',action:'Paste CSV. Sort, search, verify data integrity.',expected:'Reviewed dataset'},
+{tool:'diffchecker',action:'Compare original CSV vs corrected version.',expected:'Change log'},
+{tool:'jsoncsv',action:'Paste corrected CSV. Convert to JSON. Copy final JSON.',expected:'Corrected JSON'}
+],result:'Migrated and verified data in JSON format.'},
+{id:'timeline-report',icon:'📅',name:'Event Timeline Report',desc:'Generate timestamps → add UUIDs → build report',steps:[
+{tool:'timestamp',action:'Generate timestamps for past/future events in various timezones.',expected:'List of timestamps'},
+{tool:'uuidgen',action:'Generate UUIDs as event identifiers for each timestamp.',expected:'UUID-timestamp pairs'},
+{tool:'textcleaner',action:'Paste pairs. Clean formatting, sort by date.',expected:'Sorted event timeline'}
+],result:'Structured event timeline with UUIDs and dates.'},
+{id:'cron-password',icon:'⏰',name:'Automated Password Rotation',desc:'Build cron schedule → generate passwords → document',steps:[
+{tool:'crontab',action:'Build cron expression for weekly/monthly password rotation.',expected:'Cron schedule'},
+{tool:'passgen',action:'Generate 5 strong passwords (length 20+, all char sets).',expected:'5 strong passwords'},
+{tool:'textcleaner',action:'Paste passwords. Clean format. Add rotation schedule as header.',expected:'Rotation document'}
+],result:'Password rotation plan with cron schedule and passwords.'},
+{id:'regex-clean',icon:'🧹',name:'Regex Extraction & Cleaning',desc:'Extract patterns → clean results → audit diff',steps:[
+{tool:'regex',action:'Paste source text. Build pattern to extract target data.',expected:'Extracted matches'},
+{tool:'textcleaner',action:'Paste extracted matches. Trim, deduplicate, sort.',expected:'Cleaned extracted data'},
+{tool:'diffchecker',action:'Compare raw extracted list vs cleaned list.',expected:'Cleaning audit diff'}
+],result:'Cleaned regex-extracted data with audit trail.'},
+{id:'minified-deploy',icon:'🚀',name:'HTML Deployment Prep',desc:'MD → HTML → minify → encode → status check',steps:[
+{tool:'filetrans',action:'Paste Markdown. Convert to HTML.',expected:'HTML content'},
+{tool:'minifier',action:'Paste HTML. Click Minify. Compare size reduction.',expected:'Minified HTML'},
+{tool:'urldecode',action:'If embedding: encode minified HTML as URL component.',expected:'Encoded HTML'},
+{tool:'httpcodes',action:'Check common deployment status codes for reference.',expected:'Status reference'}
+],result:'Production-ready HTML, optionally encoded.'},
+{id:'css-color-audit',icon:'🎨',name:'CSS Color Audit Pipeline',desc:'Generate palettes → compare via diff → export clean CSS',steps:[
+{tool:'palette',action:'Generate 2-3 palettes from different base colors. Export as CSS.',expected:'Multiple CSS variable sets'},
+{tool:'diffchecker',action:'Compare two palette CSS exports side-by-side. Pick the best.',expected:'Selected palette diff'},
+{tool:'textcleaner',action:'Paste winning CSS. Clean whitespace and formatting.',expected:'Final clean CSS variables'}
+],result:'Audited CSS color palette with comparison notes.'}
+]const i=tiers.indexOf(tier);tier=tiers[(i+1)%3]
 const b=document.getElementById('tierBadge')
 b.textContent=TIER_ICON[tier];b.style.color=TIER_COLOR[tier];b.style.background=TIER_COLOR[tier]+'20'
 }
