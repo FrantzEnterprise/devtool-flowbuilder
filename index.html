@@ -272,7 +272,8 @@ const GOALS = [
 {tool:'diffchecker',action:'Compare two palette CSS exports side-by-side. Pick the best.',expected:'Selected palette diff'},
 {tool:'textcleaner',action:'Paste winning CSS. Clean whitespace and formatting.',expected:'Final clean CSS variables'}
 ],result:'Audited CSS color palette with comparison notes.'}
-]const i=tiers.indexOf(tier);tier=tiers[(i+1)%3]
+];
+const i=tiers.indexOf(tier);tier=tiers[(i+1)%3]
 const b=document.getElementById('tierBadge')
 b.textContent=TIER_ICON[tier];b.style.color=TIER_COLOR[tier];b.style.background=TIER_COLOR[tier]+'20'
 }
